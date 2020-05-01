@@ -1,5 +1,7 @@
 module github.com/bryan-at-looker/lookersdkgo
 
+go 1.14
+
 require (
 	github.com/antihax/optional v1.0.0
 	github.com/joho/godotenv v1.3.0

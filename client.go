@@ -31,6 +31,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/antihax/optional"
 	"golang.org/x/oauth2"
 )
 
@@ -107,11 +108,11 @@ type service struct {
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient() *APIClient {
+
+	cfg := lookersdkgo.NewConfiguration()
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
-
-	cfg := lookersdkgo.NewConfiguration()
 
 	c := &APIClient{}
 	c.cfg = cfg
@@ -381,6 +382,14 @@ func (c *APIClient) prepareRequest(
 		if ctx == nil {
 			ctx = context.TODO()
 		}
+		ClientID := optional.NewString(os.Getenv("LOOKERSDK_CLIENT_ID"))
+		ClientSecret := optional.NewString(os.Getenv("LOOKERSDK_CLIENT_SECRET"))
+
+		loginParams := lookersdk.LoginOpts{
+			ClientId:     ClientID,
+			ClientSecret: ClientSecret,
+		}
+
 		accessToken, _, err := c.ApiAuthApi.Login(ctx, &loginParams)
 		if err != nil {
 			log.Fatal("Error with creating access token")
