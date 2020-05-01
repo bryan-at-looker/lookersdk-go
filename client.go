@@ -74,6 +74,8 @@ type APIClient struct {
 
 	IntegrationApi *IntegrationApiService
 
+	Login context.Context
+
 	LookApi *LookApiService
 
 	LookmlModelApi *LookmlModelApiService
@@ -105,11 +107,29 @@ type service struct {
 	client *APIClient
 }
 
+// LoginContext used to login to the API Client for the first time
+func LoginContext(ctx context.Context, client *APIClient) context.Context {
+	ClientID := optional.NewString(os.Getenv("LOOKERSDK_CLIENT_ID"))
+	ClientSecret := optional.NewString(os.Getenv("LOOKERSDK_CLIENT_SECRET"))
+
+	loginParams := LoginOpts{
+		ClientId:     ClientID,
+		ClientSecret: ClientSecret,
+	}
+
+	accessToken, _, err := client.ApiAuthApi.Login(ctx, &loginParams)
+	if err != nil {
+		log.Fatal("Error with creating access token")
+	}
+	ctx = context.WithValue(ctx, ContextAccessToken, *accessToken.AccessToken)
+	return ctx
+}
+
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient() *APIClient {
 
-	cfg := lookersdkgo.NewConfiguration()
+	cfg := NewConfiguration()
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
@@ -377,25 +397,6 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-
-	if ctx == nil || !(len(ctx.Value(ContextAccessToken)) > 0) {
-		if ctx == nil {
-			ctx = context.TODO()
-		}
-		ClientID := optional.NewString(os.Getenv("LOOKERSDK_CLIENT_ID"))
-		ClientSecret := optional.NewString(os.Getenv("LOOKERSDK_CLIENT_SECRET"))
-
-		loginParams := lookersdk.LoginOpts{
-			ClientId:     ClientID,
-			ClientSecret: ClientSecret,
-		}
-
-		accessToken, _, err := c.ApiAuthApi.Login(ctx, &loginParams)
-		if err != nil {
-			log.Fatal("Error with creating access token")
-		}
-		ctx = context.WithValue(ctx, lookersdkgo.ContextAccessToken, accessToken.AccessToken)
-	}
 
 	if ctx != nil {
 		// add context to the request

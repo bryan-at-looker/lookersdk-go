@@ -65,7 +65,7 @@ type Configuration struct {
 // NewConfiguration returns a new Configuration object
 func NewConfiguration() *Configuration {
 	baseURL := os.Getenv("LOOKERSDK_BASE_URL")
-	if len(base_url) > 0 {
+	if len(baseURL) > 0 {
 		fmt.Errorf("environment variable LOOKERSDK_BASE_URL is not set")
 	}
 	apiVersion := os.Getenv("LOOKERSDK_API_VERSION")
@@ -81,7 +81,7 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		BasePath:      baseURL + "/api/" + apiVersion,
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "bryan-at-looker/lookersdk-go/0.0.1",
+		UserAgent:     "bryan-at-looker/lookersdkgo/0.0.1",
 	}
 	return cfg
 }
