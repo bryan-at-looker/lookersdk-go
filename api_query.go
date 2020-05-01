@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,7 +31,7 @@ type QueryApiService service
 
 /*
 AllRunningQueries Get All Running Queries
-Get information about all running queries. 
+Get information about all running queries.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []RunningQueries
 */
@@ -125,13 +126,13 @@ func (a *QueryApiService) AllRunningQueries(ctx _context.Context) ([]RunningQuer
 
 // CreateMergeQueryOpts Optional parameters for the method 'CreateMergeQuery'
 type CreateMergeQueryOpts struct {
-    Fields optional.String
-    MergeQuery optional.Interface
+	Fields     optional.String
+	MergeQuery optional.Interface
 }
 
 /*
 CreateMergeQuery Create Merge Query
-### Create Merge Query  Creates a new merge query object.  A merge query takes the results of one or more queries and combines (merges) the results according to field mapping definitions. The result is similar to a SQL left outer join.  A merge query can merge results of queries from different SQL databases.  The order that queries are defined in the source_queries array property is significant. The first query in the array defines the primary key into which the results of subsequent queries will be merged.  Like model/view query objects, merge queries are immutable and have structural identity - if you make a request to create a new merge query that is identical to an existing merge query, the existing merge query will be returned instead of creating a duplicate. Conversely, any change to the contents of a merge query will produce a new object with a new id. 
+### Create Merge Query  Creates a new merge query object.  A merge query takes the results of one or more queries and combines (merges) the results according to field mapping definitions. The result is similar to a SQL left outer join.  A merge query can merge results of queries from different SQL databases.  The order that queries are defined in the source_queries array property is significant. The first query in the array defines the primary key into which the results of subsequent queries will be merged.  Like model/view query objects, merge queries are immutable and have structural identity - if you make a request to create a new merge query that is identical to an existing merge query, the existing merge query will be returned instead of creating a duplicate. Conversely, any change to the contents of a merge query will produce a new object with a new id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateMergeQueryOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields
@@ -281,12 +282,12 @@ func (a *QueryApiService) CreateMergeQuery(ctx _context.Context, localVarOptiona
 
 // CreateQueryOpts Optional parameters for the method 'CreateQuery'
 type CreateQueryOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 CreateQuery Create Query
-### Create a query.  This allows you to create a new query that you can later run. Looker queries are immutable once created and are not deleted. If you create a query that is exactly like an existing query then the existing query will be returned and no new query will be created. Whether a new query is created or not, you can use the &#39;id&#39; in the returned query with the &#39;run&#39; method.  The query parameters are passed as json in the body of the request.  
+### Create a query.  This allows you to create a new query that you can later run. Looker queries are immutable once created and are not deleted. If you create a query that is exactly like an existing query then the existing query will be returned and no new query will be created. Whether a new query is created or not, you can use the &#39;id&#39; in the returned query with the &#39;run&#39; method.  The query parameters are passed as json in the body of the request.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param query Query
  * @param optional nil or *CreateQueryOpts - Optional Parameters:
@@ -429,24 +430,24 @@ func (a *QueryApiService) CreateQuery(ctx _context.Context, query Query, localVa
 
 // CreateQueryTaskOpts Optional parameters for the method 'CreateQueryTask'
 type CreateQueryTaskOpts struct {
-    Limit optional.Int64
-    ApplyFormatting optional.Bool
-    ApplyVis optional.Bool
-    Cache optional.Bool
-    ImageWidth optional.Int64
-    ImageHeight optional.Int64
-    GenerateDrillLinks optional.Bool
-    ForceProduction optional.Bool
-    CacheOnly optional.Bool
-    PathPrefix optional.String
-    RebuildPdts optional.Bool
-    ServerTableCalcs optional.Bool
-    Fields optional.String
+	Limit              optional.Int64
+	ApplyFormatting    optional.Bool
+	ApplyVis           optional.Bool
+	Cache              optional.Bool
+	ImageWidth         optional.Int64
+	ImageHeight        optional.Int64
+	GenerateDrillLinks optional.Bool
+	ForceProduction    optional.Bool
+	CacheOnly          optional.Bool
+	PathPrefix         optional.String
+	RebuildPdts        optional.Bool
+	ServerTableCalcs   optional.Bool
+	Fields             optional.String
 }
 
 /*
 CreateQueryTask Run Query Async
-### Create an async query task  Creates a query task (job) to run a previously created query asynchronously. Returns a Query Task ID.  Use [query_task(query_task_id)](#!/Query/query_task) to check the execution status of the query task. After the query task status reaches \&quot;Complete\&quot;, use [query_task_results(query_task_id)](#!/Query/query_task_results) to fetch the results of the query. 
+### Create an async query task  Creates a query task (job) to run a previously created query asynchronously. Returns a Query Task ID.  Use [query_task(query_task_id)](#!/Query/query_task) to check the execution status of the query task. After the query task status reaches \&quot;Complete\&quot;, use [query_task_results(query_task_id)](#!/Query/query_task_results) to fetch the results of the query.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createQueryTask Query parameters
  * @param optional nil or *CreateQueryTaskOpts - Optional Parameters:
@@ -637,7 +638,7 @@ func (a *QueryApiService) CreateQueryTask(ctx _context.Context, createQueryTask 
 
 /*
 CreateSqlQuery Create SQL Runner Query
-### Create a SQL Runner Query  Either the &#x60;connection_name&#x60; or &#x60;model_name&#x60; parameter MUST be provided. 
+### Create a SQL Runner Query  Either the &#x60;connection_name&#x60; or &#x60;model_name&#x60; parameter MUST be provided.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param sqlQueryCreate SQL Runner Query
 @return SqlQuery
@@ -745,7 +746,7 @@ func (a *QueryApiService) CreateSqlQuery(ctx _context.Context, sqlQueryCreate Sq
 
 /*
 KillQuery Kill Running Query
-Kill a query with a specific query_task_id. 
+Kill a query with a specific query_task_id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param queryTaskId Query task id.
 @return string
@@ -862,12 +863,12 @@ func (a *QueryApiService) KillQuery(ctx _context.Context, queryTaskId string) (s
 
 // MergeQueryOpts Optional parameters for the method 'MergeQuery'
 type MergeQueryOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 MergeQuery Get Merge Query
-### Get Merge Query  Returns a merge query object given its id. 
+### Get Merge Query  Returns a merge query object given its id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param mergeQueryId Merge Query Id
  * @param optional nil or *MergeQueryOpts - Optional Parameters:
@@ -979,12 +980,12 @@ func (a *QueryApiService) MergeQuery(ctx _context.Context, mergeQueryId string, 
 
 // QueryOpts Optional parameters for the method 'Query'
 type QueryOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Query Get Query
-### Get a previously created query by id.  A Looker query object includes the various parameters that define a database query that has been run or could be run in the future. These parameters include: model, view, fields, filters, pivots, etc. Query *results* are not part of the query object.  Query objects are unique and immutable. Query objects are created automatically in Looker as users explore data. Looker does not delete them; they become part of the query history. When asked to create a query for any given set of parameters, Looker will first try to find an existing query object with matching parameters and will only create a new object when an appropriate object can not be found.  This &#39;get&#39; method is used to get the details about a query for a given id. See the other methods here to &#39;create&#39; and &#39;run&#39; queries.  Note that some fields like &#39;filter_config&#39; and &#39;vis_config&#39; etc are specific to how the Looker UI builds queries and visualizations and are not generally useful for API use. They are not required when creating new queries and can usually just be ignored.  
+### Get a previously created query by id.  A Looker query object includes the various parameters that define a database query that has been run or could be run in the future. These parameters include: model, view, fields, filters, pivots, etc. Query *results* are not part of the query object.  Query objects are unique and immutable. Query objects are created automatically in Looker as users explore data. Looker does not delete them; they become part of the query history. When asked to create a query for any given set of parameters, Looker will first try to find an existing query object with matching parameters and will only create a new object when an appropriate object can not be found.  This &#39;get&#39; method is used to get the details about a query for a given id. See the other methods here to &#39;create&#39; and &#39;run&#39; queries.  Note that some fields like &#39;filter_config&#39; and &#39;vis_config&#39; etc are specific to how the Looker UI builds queries and visualizations and are not generally useful for API use. They are not required when creating new queries and can usually just be ignored.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param queryId Id of query
  * @param optional nil or *QueryOpts - Optional Parameters:
@@ -1096,12 +1097,12 @@ func (a *QueryApiService) Query(ctx _context.Context, queryId int64, localVarOpt
 
 // QueryForSlugOpts Optional parameters for the method 'QueryForSlug'
 type QueryForSlugOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 QueryForSlug Get Query for Slug
-### Get the query for a given query slug.  This returns the query for the &#39;slug&#39; in a query share URL.  The &#39;slug&#39; is a randomly chosen short string that is used as an alternative to the query&#39;s id value for use in URLs etc. This method exists as a convenience to help you use the API to &#39;find&#39; queries that have been created using the Looker UI.  You can use the Looker explore page to build a query and then choose the &#39;Share&#39; option to show the share url for the query. Share urls generally look something like &#39;https://looker.yourcompany/x/vwGSbfc&#39;. The trailing &#39;vwGSbfc&#39; is the share slug. You can pass that string to this api method to get details about the query. Those details include the &#39;id&#39; that you can use to run the query. Or, you can copy the query body (perhaps with your own modification) and use that as the basis to make/run new queries.  This will also work with slugs from Looker explore urls like &#39;https://looker.yourcompany/explore/ecommerce/orders?qid&#x3D;aogBgL6o3cKK1jN3RoZl5s&#39;. In this case &#39;aogBgL6o3cKK1jN3RoZl5s&#39; is the slug. 
+### Get the query for a given query slug.  This returns the query for the &#39;slug&#39; in a query share URL.  The &#39;slug&#39; is a randomly chosen short string that is used as an alternative to the query&#39;s id value for use in URLs etc. This method exists as a convenience to help you use the API to &#39;find&#39; queries that have been created using the Looker UI.  You can use the Looker explore page to build a query and then choose the &#39;Share&#39; option to show the share url for the query. Share urls generally look something like &#39;https://looker.yourcompany/x/vwGSbfc&#39;. The trailing &#39;vwGSbfc&#39; is the share slug. You can pass that string to this api method to get details about the query. Those details include the &#39;id&#39; that you can use to run the query. Or, you can copy the query body (perhaps with your own modification) and use that as the basis to make/run new queries.  This will also work with slugs from Looker explore urls like &#39;https://looker.yourcompany/explore/ecommerce/orders?qid&#x3D;aogBgL6o3cKK1jN3RoZl5s&#39;. In this case &#39;aogBgL6o3cKK1jN3RoZl5s&#39; is the slug.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param slug Slug of query
  * @param optional nil or *QueryForSlugOpts - Optional Parameters:
@@ -1213,12 +1214,12 @@ func (a *QueryApiService) QueryForSlug(ctx _context.Context, slug string, localV
 
 // QueryTaskOpts Optional parameters for the method 'QueryTask'
 type QueryTaskOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 QueryTask Get Async Query Info
-### Get Query Task details  Use this function to check the status of an async query task. After the status reaches \&quot;Complete\&quot;, you can call [query_task_results(query_task_id)](#!/Query/query_task_results) to retrieve the results of the query.  Use [create_query_task()](#!/Query/create_query_task) to create an async query task. 
+### Get Query Task details  Use this function to check the status of an async query task. After the status reaches \&quot;Complete\&quot;, you can call [query_task_results(query_task_id)](#!/Query/query_task_results) to retrieve the results of the query.  Use [create_query_task()](#!/Query/create_query_task) to create an async query task.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param queryTaskId ID of the Query Task
  * @param optional nil or *QueryTaskOpts - Optional Parameters:
@@ -1330,7 +1331,7 @@ func (a *QueryApiService) QueryTask(ctx _context.Context, queryTaskId string, lo
 
 /*
 QueryTaskMultiResults Get Multiple Async Query Results
-### Fetch results of multiple async queries  Returns the results of multiple async queries in one request.  For Query Tasks that are not completed, the response will include the execution status of the Query Task but will not include query results. Query Tasks whose results have expired will have a status of &#39;expired&#39;. If the user making the API request does not have sufficient privileges to view a Query Task result, the result will have a status of &#39;missing&#39; 
+### Fetch results of multiple async queries  Returns the results of multiple async queries in one request.  For Query Tasks that are not completed, the response will include the execution status of the Query Task but will not include query results. Query Tasks whose results have expired will have a status of &#39;expired&#39;. If the user making the API request does not have sufficient privileges to view a Query Task result, the result will have a status of &#39;missing&#39;
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param queryTaskIds List of Query Task IDs
 @return map[string]string
@@ -1437,7 +1438,7 @@ func (a *QueryApiService) QueryTaskMultiResults(ctx _context.Context, queryTaskI
 
 /*
 QueryTaskResults Get Async Query Results
-### Get Async Query Results  Returns the results of an async query task if the query has completed.  If the query task is still running or waiting to run, this function returns 204 No Content.  If the query task ID is invalid or the cached results of the query task have expired, this function returns 404 Not Found.  Use [query_task(query_task_id)](#!/Query/query_task) to check the execution status of the query task Call query_task_results only after the query task status reaches \&quot;Complete\&quot;.  You can also use [query_task_multi_results()](#!/Query/query_task_multi_results) retrieve the results of multiple async query tasks at the same time.  #### SQL Error Handling: If the query fails due to a SQL db error, how this is communicated depends on the result_format you requested in &#x60;create_query_task()&#x60;.  For &#x60;json_detail&#x60; result_format: &#x60;query_task_results()&#x60; will respond with HTTP status &#39;200 OK&#39; and db SQL error info will be in the &#x60;errors&#x60; property of the response object. The &#39;data&#39; property will be empty.  For all other result formats: &#x60;query_task_results()&#x60; will respond with HTTP status &#x60;400 Bad Request&#x60; and some db SQL error info will be in the message of the 400 error response, but not as detailed as expressed in &#x60;json_detail.errors&#x60;. These data formats can only carry row data, and error info is not row data. 
+### Get Async Query Results  Returns the results of an async query task if the query has completed.  If the query task is still running or waiting to run, this function returns 204 No Content.  If the query task ID is invalid or the cached results of the query task have expired, this function returns 404 Not Found.  Use [query_task(query_task_id)](#!/Query/query_task) to check the execution status of the query task Call query_task_results only after the query task status reaches \&quot;Complete\&quot;.  You can also use [query_task_multi_results()](#!/Query/query_task_multi_results) retrieve the results of multiple async query tasks at the same time.  #### SQL Error Handling: If the query fails due to a SQL db error, how this is communicated depends on the result_format you requested in &#x60;create_query_task()&#x60;.  For &#x60;json_detail&#x60; result_format: &#x60;query_task_results()&#x60; will respond with HTTP status &#39;200 OK&#39; and db SQL error info will be in the &#x60;errors&#x60; property of the response object. The &#39;data&#39; property will be empty.  For all other result formats: &#x60;query_task_results()&#x60; will respond with HTTP status &#x60;400 Bad Request&#x60; and some db SQL error info will be in the message of the 400 error response, but not as detailed as expressed in &#x60;json_detail.errors&#x60;. These data formats can only carry row data, and error info is not row data.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param queryTaskId ID of the Query Task
 @return string
@@ -1554,23 +1555,23 @@ func (a *QueryApiService) QueryTaskResults(ctx _context.Context, queryTaskId str
 
 // RunInlineQueryOpts Optional parameters for the method 'RunInlineQuery'
 type RunInlineQueryOpts struct {
-    Limit optional.Int64
-    ApplyFormatting optional.Bool
-    ApplyVis optional.Bool
-    Cache optional.Bool
-    ImageWidth optional.Int64
-    ImageHeight optional.Int64
-    GenerateDrillLinks optional.Bool
-    ForceProduction optional.Bool
-    CacheOnly optional.Bool
-    PathPrefix optional.String
-    RebuildPdts optional.Bool
-    ServerTableCalcs optional.Bool
+	Limit              optional.Int64
+	ApplyFormatting    optional.Bool
+	ApplyVis           optional.Bool
+	Cache              optional.Bool
+	ImageWidth         optional.Int64
+	ImageHeight        optional.Int64
+	GenerateDrillLinks optional.Bool
+	ForceProduction    optional.Bool
+	CacheOnly          optional.Bool
+	PathPrefix         optional.String
+	RebuildPdts        optional.Bool
+	ServerTableCalcs   optional.Bool
 }
 
 /*
 RunInlineQuery Run Inline Query
-### Run the query that is specified inline in the posted body.  This allows running a query as defined in json in the posted body. This combines the two actions of posting &amp; running a query into one step.  Here is an example body in json: &#x60;&#x60;&#x60; {   \&quot;model\&quot;:\&quot;thelook\&quot;,   \&quot;view\&quot;:\&quot;inventory_items\&quot;,   \&quot;fields\&quot;:[\&quot;category.name\&quot;,\&quot;inventory_items.days_in_inventory_tier\&quot;,\&quot;products.count\&quot;],   \&quot;filters\&quot;:{\&quot;category.name\&quot;:\&quot;socks\&quot;},   \&quot;sorts\&quot;:[\&quot;products.count desc 0\&quot;],   \&quot;limit\&quot;:\&quot;500\&quot;,   \&quot;query_timezone\&quot;:\&quot;America/Los_Angeles\&quot; } &#x60;&#x60;&#x60;  When using the Ruby SDK this would be passed as a Ruby hash like: &#x60;&#x60;&#x60; {  :model&#x3D;&gt;\&quot;thelook\&quot;,  :view&#x3D;&gt;\&quot;inventory_items\&quot;,  :fields&#x3D;&gt;   [\&quot;category.name\&quot;,    \&quot;inventory_items.days_in_inventory_tier\&quot;,    \&quot;products.count\&quot;],  :filters&#x3D;&gt;{:\&quot;category.name\&quot;&#x3D;&gt;\&quot;socks\&quot;},  :sorts&#x3D;&gt;[\&quot;products.count desc 0\&quot;],  :limit&#x3D;&gt;\&quot;500\&quot;,  :query_timezone&#x3D;&gt;\&quot;America/Los_Angeles\&quot;, } &#x60;&#x60;&#x60;  This will return the result of running the query in the format specified by the &#39;result_format&#39; parameter.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query   
+### Run the query that is specified inline in the posted body.  This allows running a query as defined in json in the posted body. This combines the two actions of posting &amp; running a query into one step.  Here is an example body in json: &#x60;&#x60;&#x60; {   \&quot;model\&quot;:\&quot;thelook\&quot;,   \&quot;view\&quot;:\&quot;inventory_items\&quot;,   \&quot;fields\&quot;:[\&quot;category.name\&quot;,\&quot;inventory_items.days_in_inventory_tier\&quot;,\&quot;products.count\&quot;],   \&quot;filters\&quot;:{\&quot;category.name\&quot;:\&quot;socks\&quot;},   \&quot;sorts\&quot;:[\&quot;products.count desc 0\&quot;],   \&quot;limit\&quot;:\&quot;500\&quot;,   \&quot;query_timezone\&quot;:\&quot;America/Los_Angeles\&quot; } &#x60;&#x60;&#x60;  When using the Ruby SDK this would be passed as a Ruby hash like: &#x60;&#x60;&#x60; {  :model&#x3D;&gt;\&quot;thelook\&quot;,  :view&#x3D;&gt;\&quot;inventory_items\&quot;,  :fields&#x3D;&gt;   [\&quot;category.name\&quot;,    \&quot;inventory_items.days_in_inventory_tier\&quot;,    \&quot;products.count\&quot;],  :filters&#x3D;&gt;{:\&quot;category.name\&quot;&#x3D;&gt;\&quot;socks\&quot;},  :sorts&#x3D;&gt;[\&quot;products.count desc 0\&quot;],  :limit&#x3D;&gt;\&quot;500\&quot;,  :query_timezone&#x3D;&gt;\&quot;America/Los_Angeles\&quot;, } &#x60;&#x60;&#x60;  This will return the result of running the query in the format specified by the &#39;result_format&#39; parameter.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param resultFormat Format of result
  * @param query inline query
@@ -1739,23 +1740,23 @@ func (a *QueryApiService) RunInlineQuery(ctx _context.Context, resultFormat stri
 
 // RunQueryOpts Optional parameters for the method 'RunQuery'
 type RunQueryOpts struct {
-    Limit optional.Int64
-    ApplyFormatting optional.Bool
-    ApplyVis optional.Bool
-    Cache optional.Bool
-    ImageWidth optional.Int64
-    ImageHeight optional.Int64
-    GenerateDrillLinks optional.Bool
-    ForceProduction optional.Bool
-    CacheOnly optional.Bool
-    PathPrefix optional.String
-    RebuildPdts optional.Bool
-    ServerTableCalcs optional.Bool
+	Limit              optional.Int64
+	ApplyFormatting    optional.Bool
+	ApplyVis           optional.Bool
+	Cache              optional.Bool
+	ImageWidth         optional.Int64
+	ImageHeight        optional.Int64
+	GenerateDrillLinks optional.Bool
+	ForceProduction    optional.Bool
+	CacheOnly          optional.Bool
+	PathPrefix         optional.String
+	RebuildPdts        optional.Bool
+	ServerTableCalcs   optional.Bool
 }
 
 /*
 RunQuery Run Query
-### Run a saved query.  This runs a previously saved query. You can use this on a query that was generated in the Looker UI or one that you have explicitly created using the API. You can also use a query &#39;id&#39; from a saved &#39;Look&#39;.  The &#39;result_format&#39; parameter specifies the desired structure and format of the response.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query   
+### Run a saved query.  This runs a previously saved query. You can use this on a query that was generated in the Looker UI or one that you have explicitly created using the API. You can also use a query &#39;id&#39; from a saved &#39;Look&#39;.  The &#39;result_format&#39; parameter specifies the desired structure and format of the response.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param queryId Id of query
  * @param resultFormat Format of result
@@ -1933,7 +1934,7 @@ func (a *QueryApiService) RunQuery(ctx _context.Context, queryId int64, resultFo
 
 // RunSqlQueryOpts Optional parameters for the method 'RunSqlQuery'
 type RunSqlQueryOpts struct {
-    Download optional.String
+	Download optional.String
 }
 
 /*
@@ -2072,7 +2073,7 @@ func (a *QueryApiService) RunSqlQuery(ctx _context.Context, slug string, resultF
 
 /*
 RunUrlEncodedQuery Run Url Encoded Query
-### Run an URL encoded query.  This requires the caller to encode the specifiers for the query into the URL query part using Looker-specific syntax as explained below.  Generally, you would want to use one of the methods that takes the parameters as json in the POST body for creating and/or running queries. This method exists for cases where one really needs to encode the parameters into the URL of a single &#39;GET&#39; request. This matches the way that the Looker UI formats &#39;explore&#39; URLs etc.  The parameters here are very similar to the json body formatting except that the filter syntax is tricky. Unfortunately, this format makes this method not currently callible via the &#39;Try it out!&#39; button in this documentation page. But, this is callable  when creating URLs manually or when using the Looker SDK.  Here is an example inline query URL:  &#x60;&#x60;&#x60; https://looker.mycompany.com:19999/api/3.0/queries/models/thelook/views/inventory_items/run/json?fields&#x3D;category.name,inventory_items.days_in_inventory_tier,products.count&amp;f[category.name]&#x3D;socks&amp;sorts&#x3D;products.count+desc+0&amp;limit&#x3D;500&amp;query_timezone&#x3D;America/Los_Angeles &#x60;&#x60;&#x60;  When invoking this endpoint with the Ruby SDK, pass the query parameter parts as a hash. The hash to match the above would look like:  &#x60;&#x60;&#x60;ruby query_params &#x3D; {   :fields &#x3D;&gt; \&quot;category.name,inventory_items.days_in_inventory_tier,products.count\&quot;,   :\&quot;f[category.name]\&quot; &#x3D;&gt; \&quot;socks\&quot;,   :sorts &#x3D;&gt; \&quot;products.count desc 0\&quot;,   :limit &#x3D;&gt; \&quot;500\&quot;,   :query_timezone &#x3D;&gt; \&quot;America/Los_Angeles\&quot; } response &#x3D; ruby_sdk.run_url_encoded_query(&#39;thelook&#39;,&#39;inventory_items&#39;,&#39;json&#39;, query_params)  &#x60;&#x60;&#x60;  Again, it is generally easier to use the variant of this method that passes the full query in the POST body. This method is available for cases where other alternatives won&#39;t fit the need.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query   
+### Run an URL encoded query.  This requires the caller to encode the specifiers for the query into the URL query part using Looker-specific syntax as explained below.  Generally, you would want to use one of the methods that takes the parameters as json in the POST body for creating and/or running queries. This method exists for cases where one really needs to encode the parameters into the URL of a single &#39;GET&#39; request. This matches the way that the Looker UI formats &#39;explore&#39; URLs etc.  The parameters here are very similar to the json body formatting except that the filter syntax is tricky. Unfortunately, this format makes this method not currently callible via the &#39;Try it out!&#39; button in this documentation page. But, this is callable  when creating URLs manually or when using the Looker SDK.  Here is an example inline query URL:  &#x60;&#x60;&#x60; https://looker.mycompany.com:19999/api/3.0/queries/models/thelook/views/inventory_items/run/json?fields&#x3D;category.name,inventory_items.days_in_inventory_tier,products.count&amp;f[category.name]&#x3D;socks&amp;sorts&#x3D;products.count+desc+0&amp;limit&#x3D;500&amp;query_timezone&#x3D;America/Los_Angeles &#x60;&#x60;&#x60;  When invoking this endpoint with the Ruby SDK, pass the query parameter parts as a hash. The hash to match the above would look like:  &#x60;&#x60;&#x60;ruby query_params &#x3D; {   :fields &#x3D;&gt; \&quot;category.name,inventory_items.days_in_inventory_tier,products.count\&quot;,   :\&quot;f[category.name]\&quot; &#x3D;&gt; \&quot;socks\&quot;,   :sorts &#x3D;&gt; \&quot;products.count desc 0\&quot;,   :limit &#x3D;&gt; \&quot;500\&quot;,   :query_timezone &#x3D;&gt; \&quot;America/Los_Angeles\&quot; } response &#x3D; ruby_sdk.run_url_encoded_query(&#39;thelook&#39;,&#39;inventory_items&#39;,&#39;json&#39;, query_params)  &#x60;&#x60;&#x60;  Again, it is generally easier to use the variant of this method that passes the full query in the POST body. This method is available for cases where other alternatives won&#39;t fit the need.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param modelName Model name
  * @param viewName View name

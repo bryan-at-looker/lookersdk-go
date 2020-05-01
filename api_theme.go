@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,14 +31,14 @@ type ThemeApiService service
 
 // ActiveThemesOpts Optional parameters for the method 'ActiveThemes'
 type ActiveThemesOpts struct {
-    Name optional.String
-    Ts optional.Time
-    Fields optional.String
+	Name   optional.String
+	Ts     optional.Time
+	Fields optional.String
 }
 
 /*
 ActiveThemes Get Active Themes
-### Get active themes  Returns an array of active themes.  If the &#x60;name&#x60; parameter is specified, it will return an array with one theme if it&#39;s active and found.  The optional &#x60;ts&#x60; parameter can specify a different timestamp than \&quot;now.\&quot;  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.   
+### Get active themes  Returns an array of active themes.  If the &#x60;name&#x60; parameter is specified, it will return an array with one theme if it&#39;s active and found.  The optional &#x60;ts&#x60; parameter can specify a different timestamp than \&quot;now.\&quot;  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ActiveThemesOpts - Optional Parameters:
  * @param "Name" (optional.String) -  Name of theme
@@ -155,12 +156,12 @@ func (a *ThemeApiService) ActiveThemes(ctx _context.Context, localVarOptionals *
 
 // AllThemesOpts Optional parameters for the method 'AllThemes'
 type AllThemesOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllThemes Get All Themes
-### Get an array of all existing themes  Get a **single theme** by id with [Theme](#!/Theme/theme)  This method returns an array of all existing themes. The active time for the theme is not considered.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Get an array of all existing themes  Get a **single theme** by id with [Theme](#!/Theme/theme)  This method returns an array of all existing themes. The active time for the theme is not considered.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllThemesOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -270,7 +271,7 @@ func (a *ThemeApiService) AllThemes(ctx _context.Context, localVarOptionals *All
 
 /*
 CreateTheme Create Theme
-### Create a theme  Creates a new theme object, returning the theme details, including the created id.  If &#x60;settings&#x60; are not specified, the default theme settings will be copied into the new theme.  The theme &#x60;name&#x60; can only contain alphanumeric characters or underscores. Theme names should not contain any confidential information, such as customer names.  **Update** an existing theme with [Update Theme](#!/Theme/update_theme)  **Permanently delete** an existing theme with [Delete Theme](#!/Theme/delete_theme)  For more information, see [Creating and Applying Themes](https://looker.com/docs/r/admin/themes).  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Create a theme  Creates a new theme object, returning the theme details, including the created id.  If &#x60;settings&#x60; are not specified, the default theme settings will be copied into the new theme.  The theme &#x60;name&#x60; can only contain alphanumeric characters or underscores. Theme names should not contain any confidential information, such as customer names.  **Update** an existing theme with [Update Theme](#!/Theme/update_theme)  **Permanently delete** an existing theme with [Delete Theme](#!/Theme/delete_theme)  For more information, see [Creating and Applying Themes](https://looker.com/docs/r/admin/themes).  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param theme Theme
 @return Theme
@@ -408,12 +409,12 @@ func (a *ThemeApiService) CreateTheme(ctx _context.Context, theme Theme) (Theme,
 
 // DefaultThemeOpts Optional parameters for the method 'DefaultTheme'
 type DefaultThemeOpts struct {
-    Ts optional.Time
+	Ts optional.Time
 }
 
 /*
 DefaultTheme Get Default Theme
-### Get the default theme  Returns the active theme object set as the default.  The **default** theme name can be set in the UI on the Admin|Theme UI page  The optional &#x60;ts&#x60; parameter can specify a different timestamp than \&quot;now.\&quot; If specified, it returns the default theme at the time indicated. 
+### Get the default theme  Returns the active theme object set as the default.  The **default** theme name can be set in the UI on the Admin|Theme UI page  The optional &#x60;ts&#x60; parameter can specify a different timestamp than \&quot;now.\&quot; If specified, it returns the default theme at the time indicated.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *DefaultThemeOpts - Optional Parameters:
  * @param "Ts" (optional.Time) -  Timestamp representing the target datetime for the active period. Defaults to 'now'
@@ -523,7 +524,7 @@ func (a *ThemeApiService) DefaultTheme(ctx _context.Context, localVarOptionals *
 
 /*
 DeleteTheme Delete Theme
-### Delete a specific theme by id  This operation permanently deletes the identified theme from the database.  Because multiple themes can have the same name (with different activation time spans) themes can only be deleted by ID.  All IDs associated with a theme name can be retrieved by searching for the theme name with [Theme Search](#!/Theme/search).  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Delete a specific theme by id  This operation permanently deletes the identified theme from the database.  Because multiple themes can have the same name (with different activation time spans) themes can only be deleted by ID.  All IDs associated with a theme name can be retrieved by searching for the theme name with [Theme Search](#!/Theme/search).  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param themeId Id of theme
 @return string
@@ -640,20 +641,20 @@ func (a *ThemeApiService) DeleteTheme(ctx _context.Context, themeId string) (str
 
 // SearchThemesOpts Optional parameters for the method 'SearchThemes'
 type SearchThemesOpts struct {
-    Id optional.Int64
-    Name optional.String
-    BeginAt optional.Time
-    EndAt optional.Time
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    Fields optional.String
-    FilterOr optional.Bool
+	Id       optional.Int64
+	Name     optional.String
+	BeginAt  optional.Time
+	EndAt    optional.Time
+	Limit    optional.Int64
+	Offset   optional.Int64
+	Sorts    optional.String
+	Fields   optional.String
+	FilterOr optional.Bool
 }
 
 /*
 SearchThemes Search Themes
-### Search all themes for matching criteria.  Returns an **array of theme objects** that match the specified search criteria.  | Search Parameters | Description | :-------------------: | :------ | | &#x60;begin_at&#x60; only | Find themes active at or after &#x60;begin_at&#x60; | &#x60;end_at&#x60; only | Find themes active at or before &#x60;end_at&#x60; | both set | Find themes with an active inclusive period between &#x60;begin_at&#x60; and &#x60;end_at&#x60;  Note: Range matching requires boolean AND logic. When using &#x60;begin_at&#x60; and &#x60;end_at&#x60; together, do not use &#x60;filter_or&#x60;&#x3D;TRUE  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   Get a **single theme** by id with [Theme](#!/Theme/theme)  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Search all themes for matching criteria.  Returns an **array of theme objects** that match the specified search criteria.  | Search Parameters | Description | :-------------------: | :------ | | &#x60;begin_at&#x60; only | Find themes active at or after &#x60;begin_at&#x60; | &#x60;end_at&#x60; only | Find themes active at or before &#x60;end_at&#x60; | both set | Find themes with an active inclusive period between &#x60;begin_at&#x60; and &#x60;end_at&#x60;  Note: Range matching requires boolean AND logic. When using &#x60;begin_at&#x60; and &#x60;end_at&#x60; together, do not use &#x60;filter_or&#x60;&#x3D;TRUE  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   Get a **single theme** by id with [Theme](#!/Theme/theme)  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchThemesOpts - Optional Parameters:
  * @param "Id" (optional.Int64) -  Match theme id.
@@ -795,7 +796,7 @@ func (a *ThemeApiService) SearchThemes(ctx _context.Context, localVarOptionals *
 
 /*
 SetDefaultTheme Set Default Theme
-### Set the global default theme by theme name  Only Admin users can call this function.  Only an active theme with no expiration (&#x60;end_at&#x60; not set) can be assigned as the default theme. As long as a theme has an active record with no expiration, it can be set as the default.  [Create Theme](#!/Theme/create) has detailed information on rules for default and active themes  Returns the new specified default theme object.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Set the global default theme by theme name  Only Admin users can call this function.  Only an active theme with no expiration (&#x60;end_at&#x60; not set) can be assigned as the default theme. As long as a theme has an active record with no expiration, it can be set as the default.  [Create Theme](#!/Theme/create) has detailed information on rules for default and active themes  Returns the new specified default theme object.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of theme to set as default
 @return Theme
@@ -922,12 +923,12 @@ func (a *ThemeApiService) SetDefaultTheme(ctx _context.Context, name string) (Th
 
 // ThemeOpts Optional parameters for the method 'Theme'
 type ThemeOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Theme Get Theme
-### Get a theme by ID  Use this to retrieve a specific theme, whether or not it&#39;s currently active.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Get a theme by ID  Use this to retrieve a specific theme, whether or not it&#39;s currently active.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param themeId Id of theme
  * @param optional nil or *ThemeOpts - Optional Parameters:
@@ -1039,12 +1040,12 @@ func (a *ThemeApiService) Theme(ctx _context.Context, themeId string, localVarOp
 
 // ThemeOrDefaultOpts Optional parameters for the method 'ThemeOrDefault'
 type ThemeOrDefaultOpts struct {
-    Ts optional.Time
+	Ts optional.Time
 }
 
 /*
 ThemeOrDefault Get Theme or Default
-### Get the named theme if it&#39;s active. Otherwise, return the default theme  The optional &#x60;ts&#x60; parameter can specify a different timestamp than \&quot;now.\&quot; Note: API users with &#x60;show&#x60; ability can call this function  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Get the named theme if it&#39;s active. Otherwise, return the default theme  The optional &#x60;ts&#x60; parameter can specify a different timestamp than \&quot;now.\&quot; Note: API users with &#x60;show&#x60; ability can call this function  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Name of theme
  * @param optional nil or *ThemeOrDefaultOpts - Optional Parameters:
@@ -1156,7 +1157,7 @@ func (a *ThemeApiService) ThemeOrDefault(ctx _context.Context, name string, loca
 
 /*
 UpdateTheme Update Theme
-### Update the theme by id.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Update the theme by id.  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param themeId Id of theme
  * @param theme Theme
@@ -1286,7 +1287,7 @@ func (a *ThemeApiService) UpdateTheme(ctx _context.Context, themeId string, them
 
 /*
 ValidateTheme Validate Theme
-### Validate a theme with the specified information  Validates all values set for the theme, returning any errors encountered, or 200 OK if valid  See [Create Theme](#!/Theme/create_theme) for constraints  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.  
+### Validate a theme with the specified information  Validates all values set for the theme, returning any errors encountered, or 200 OK if valid  See [Create Theme](#!/Theme/create_theme) for constraints  **Note**: Custom themes needs to be enabled by Looker. Unless custom themes are enabled, only the automatically generated default theme can be used. Please contact your Account Manager or support@looker.com to update your license for this feature.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param theme Theme
 @return ValidationError

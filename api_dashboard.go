@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,12 +31,12 @@ type DashboardApiService service
 
 // AllDashboardsOpts Optional parameters for the method 'AllDashboards'
 type AllDashboardsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllDashboards Get All Dashboards
-### Get information about all active dashboards.  Returns an array of **abbreviated dashboard objects**. Dashboards marked as deleted are excluded from this list.  Get the **full details** of a specific dashboard by id with [dashboard()](#!/Dashboard/dashboard)  Find **deleted dashboards** with [search_dashboards()](#!/Dashboard/search_dashboards) 
+### Get information about all active dashboards.  Returns an array of **abbreviated dashboard objects**. Dashboards marked as deleted are excluded from this list.  Get the **full details** of a specific dashboard by id with [dashboard()](#!/Dashboard/dashboard)  Find **deleted dashboards** with [search_dashboards()](#!/Dashboard/search_dashboards)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllDashboardsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -145,7 +146,7 @@ func (a *DashboardApiService) AllDashboards(ctx _context.Context, localVarOption
 
 /*
 CreateDashboard Create Dashboard
-### Create a new dashboard  Creates a new dashboard object and returns the details of the newly created dashboard.  &#x60;Title&#x60;, &#x60;user_id&#x60;, and &#x60;space_id&#x60; are all required fields. &#x60;Space_id&#x60; and &#x60;user_id&#x60; must contain the id of an existing space or user, respectively. A dashboard&#39;s &#x60;title&#x60; must be unique within the space in which it resides.  If you receive a 422 error response when creating a dashboard, be sure to look at the response body for information about exactly which fields are missing or contain invalid data.  You can **update** an existing dashboard with [update_dashboard()](#!/Dashboard/update_dashboard)  You can **permanently delete** an existing dashboard with [delete_dashboard()](#!/Dashboard/delete_dashboard) 
+### Create a new dashboard  Creates a new dashboard object and returns the details of the newly created dashboard.  &#x60;Title&#x60;, &#x60;user_id&#x60;, and &#x60;space_id&#x60; are all required fields. &#x60;Space_id&#x60; and &#x60;user_id&#x60; must contain the id of an existing space or user, respectively. A dashboard&#39;s &#x60;title&#x60; must be unique within the space in which it resides.  If you receive a 422 error response when creating a dashboard, be sure to look at the response body for information about exactly which fields are missing or contain invalid data.  You can **update** an existing dashboard with [update_dashboard()](#!/Dashboard/update_dashboard)  You can **permanently delete** an existing dashboard with [delete_dashboard()](#!/Dashboard/delete_dashboard)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dashboard Dashboard
 @return Dashboard
@@ -283,7 +284,7 @@ func (a *DashboardApiService) CreateDashboard(ctx _context.Context, dashboard Da
 
 // CreateDashboardElementOpts Optional parameters for the method 'CreateDashboardElement'
 type CreateDashboardElementOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -431,7 +432,7 @@ func (a *DashboardApiService) CreateDashboardElement(ctx _context.Context, dashb
 
 // CreateDashboardFilterOpts Optional parameters for the method 'CreateDashboardFilter'
 type CreateDashboardFilterOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -579,7 +580,7 @@ func (a *DashboardApiService) CreateDashboardFilter(ctx _context.Context, create
 
 // CreateDashboardLayoutOpts Optional parameters for the method 'CreateDashboardLayout'
 type CreateDashboardLayoutOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -727,12 +728,12 @@ func (a *DashboardApiService) CreateDashboardLayout(ctx _context.Context, dashbo
 
 // DashboardOpts Optional parameters for the method 'Dashboard'
 type DashboardOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Dashboard Get Dashboard
-### Get information about a dashboard  Returns the full details of the identified dashboard object  Get a **summary list** of all active dashboards with [all_dashboards()](#!/Dashboard/all_dashboards)  You can **Search** for dashboards with [search_dashboards()](#!/Dashboard/search_dashboards) 
+### Get information about a dashboard  Returns the full details of the identified dashboard object  Get a **summary list** of all active dashboards with [all_dashboards()](#!/Dashboard/all_dashboards)  You can **Search** for dashboards with [search_dashboards()](#!/Dashboard/search_dashboards)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dashboardId Id of dashboard
  * @param optional nil or *DashboardOpts - Optional Parameters:
@@ -844,7 +845,7 @@ func (a *DashboardApiService) Dashboard(ctx _context.Context, dashboardId string
 
 // DashboardDashboardElementsOpts Optional parameters for the method 'DashboardDashboardElements'
 type DashboardDashboardElementsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -961,7 +962,7 @@ func (a *DashboardApiService) DashboardDashboardElements(ctx _context.Context, d
 
 // DashboardDashboardFiltersOpts Optional parameters for the method 'DashboardDashboardFilters'
 type DashboardDashboardFiltersOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1078,7 +1079,7 @@ func (a *DashboardApiService) DashboardDashboardFilters(ctx _context.Context, da
 
 // DashboardDashboardLayoutsOpts Optional parameters for the method 'DashboardDashboardLayouts'
 type DashboardDashboardLayoutsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1195,7 +1196,7 @@ func (a *DashboardApiService) DashboardDashboardLayouts(ctx _context.Context, da
 
 // DashboardElementOpts Optional parameters for the method 'DashboardElement'
 type DashboardElementOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1312,7 +1313,7 @@ func (a *DashboardApiService) DashboardElement(ctx _context.Context, dashboardEl
 
 // DashboardFilterOpts Optional parameters for the method 'DashboardFilter'
 type DashboardFilterOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1429,7 +1430,7 @@ func (a *DashboardApiService) DashboardFilter(ctx _context.Context, dashboardFil
 
 // DashboardLayoutOpts Optional parameters for the method 'DashboardLayout'
 type DashboardLayoutOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1546,7 +1547,7 @@ func (a *DashboardApiService) DashboardLayout(ctx _context.Context, dashboardLay
 
 // DashboardLayoutComponentOpts Optional parameters for the method 'DashboardLayoutComponent'
 type DashboardLayoutComponentOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1663,7 +1664,7 @@ func (a *DashboardApiService) DashboardLayoutComponent(ctx _context.Context, das
 
 // DashboardLayoutDashboardLayoutComponentsOpts Optional parameters for the method 'DashboardLayoutDashboardLayoutComponents'
 type DashboardLayoutDashboardLayoutComponentsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1780,7 +1781,7 @@ func (a *DashboardApiService) DashboardLayoutDashboardLayoutComponents(ctx _cont
 
 /*
 DashboardLookml Get lookml of a UDD
-### Get lookml of a UDD  Returns a JSON object that contains the dashboard id and the full lookml  
+### Get lookml of a UDD  Returns a JSON object that contains the dashboard id and the full lookml
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dashboardId Id of dashboard
 @return DashboardLookml
@@ -1887,7 +1888,7 @@ func (a *DashboardApiService) DashboardLookml(ctx _context.Context, dashboardId 
 
 /*
 DeleteDashboard Delete Dashboard
-### Delete the dashboard with the specified id  Permanently **deletes** a dashboard. (The dashboard cannot be recovered after this operation.)  \&quot;Soft\&quot; delete or hide a dashboard by setting its &#x60;deleted&#x60; status to &#x60;True&#x60; with [update_dashboard()](#!/Dashboard/update_dashboard).  Note: When a dashboard is deleted in the UI, it is soft deleted. Use this API call to permanently remove it, if desired. 
+### Delete the dashboard with the specified id  Permanently **deletes** a dashboard. (The dashboard cannot be recovered after this operation.)  \&quot;Soft\&quot; delete or hide a dashboard by setting its &#x60;deleted&#x60; status to &#x60;True&#x60; with [update_dashboard()](#!/Dashboard/update_dashboard).  Note: When a dashboard is deleted in the UI, it is soft deleted. Use this API call to permanently remove it, if desired.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dashboardId Id of dashboard
 @return string
@@ -2335,13 +2336,13 @@ func (a *DashboardApiService) DeleteDashboardLayout(ctx _context.Context, dashbo
 
 // ImportLookmlDashboardOpts Optional parameters for the method 'ImportLookmlDashboard'
 type ImportLookmlDashboardOpts struct {
-    RawLocale optional.Bool
-    Dashboard optional.Interface
+	RawLocale optional.Bool
+	Dashboard optional.Interface
 }
 
 /*
 ImportLookmlDashboard Import LookML Dashboard
-### Import a LookML dashboard to a space as a UDD Creates a UDD (a dashboard which exists in the Looker database rather than as a LookML file) from the LookML dashboard and puts it in the space specified. The created UDD will have a lookml_link_id which links to the original LookML dashboard.  To give the imported dashboard specify a (e.g. title: \&quot;my title\&quot;) in the body of your request, otherwise the imported dashboard will have the same title as the original LookML dashboard.  For this operation to succeed the user must have permission to see the LookML dashboard in question, and have permission to create content in the space the dashboard is being imported to.  **Sync** a linked UDD with [sync_lookml_dashboard()](#!/Dashboard/sync_lookml_dashboard) **Unlink** a linked UDD by setting lookml_link_id to null with [update_dashboard()](#!/Dashboard/update_dashboard) 
+### Import a LookML dashboard to a space as a UDD Creates a UDD (a dashboard which exists in the Looker database rather than as a LookML file) from the LookML dashboard and puts it in the space specified. The created UDD will have a lookml_link_id which links to the original LookML dashboard.  To give the imported dashboard specify a (e.g. title: \&quot;my title\&quot;) in the body of your request, otherwise the imported dashboard will have the same title as the original LookML dashboard.  For this operation to succeed the user must have permission to see the LookML dashboard in question, and have permission to create content in the space the dashboard is being imported to.  **Sync** a linked UDD with [sync_lookml_dashboard()](#!/Dashboard/sync_lookml_dashboard) **Unlink** a linked UDD by setting lookml_link_id to null with [update_dashboard()](#!/Dashboard/update_dashboard)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param lookmlDashboardId Id of LookML dashboard
  * @param spaceId Id of space to import the dashboard to
@@ -2485,18 +2486,18 @@ func (a *DashboardApiService) ImportLookmlDashboard(ctx _context.Context, lookml
 
 // SearchDashboardElementsOpts Optional parameters for the method 'SearchDashboardElements'
 type SearchDashboardElementsOpts struct {
-    DashboardId optional.Int64
-    LookId optional.Int64
-    Title optional.String
-    Deleted optional.Bool
-    Fields optional.String
-    FilterOr optional.Bool
-    Sorts optional.String
+	DashboardId optional.Int64
+	LookId      optional.Int64
+	Title       optional.String
+	Deleted     optional.Bool
+	Fields      optional.String
+	FilterOr    optional.Bool
+	Sorts       optional.String
 }
 
 /*
 SearchDashboardElements Search Dashboard Elements
-### Search Dashboard Elements  Returns an **array of DashboardElement objects** that match the specified search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search Dashboard Elements  Returns an **array of DashboardElement objects** that match the specified search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchDashboardElementsOpts - Optional Parameters:
  * @param "DashboardId" (optional.Int64) -  Select elements that refer to a given dashboard id
@@ -2630,29 +2631,29 @@ func (a *DashboardApiService) SearchDashboardElements(ctx _context.Context, loca
 
 // SearchDashboardsOpts Optional parameters for the method 'SearchDashboards'
 type SearchDashboardsOpts struct {
-    Id optional.Int64
-    Slug optional.String
-    Title optional.String
-    Description optional.String
-    ContentFavoriteId optional.Int64
-    SpaceId optional.String
-    Deleted optional.String
-    UserId optional.String
-    ViewCount optional.String
-    ContentMetadataId optional.Int64
-    Curate optional.Bool
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    FilterOr optional.Bool
+	Id                optional.Int64
+	Slug              optional.String
+	Title             optional.String
+	Description       optional.String
+	ContentFavoriteId optional.Int64
+	SpaceId           optional.String
+	Deleted           optional.String
+	UserId            optional.String
+	ViewCount         optional.String
+	ContentMetadataId optional.Int64
+	Curate            optional.Bool
+	Fields            optional.String
+	Page              optional.Int64
+	PerPage           optional.Int64
+	Limit             optional.Int64
+	Offset            optional.Int64
+	Sorts             optional.String
+	FilterOr          optional.Bool
 }
 
 /*
 SearchDashboards Search Dashboards
-### Search Dashboards  Returns an **array of dashboard objects** that match the specified search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   The parameters &#x60;limit&#x60;, and &#x60;offset&#x60; are recommended for fetching results in page-size chunks.  Get a **single dashboard** by id with [dashboard()](#!/Dashboard/dashboard) 
+### Search Dashboards  Returns an **array of dashboard objects** that match the specified search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   The parameters &#x60;limit&#x60;, and &#x60;offset&#x60; are recommended for fetching results in page-size chunks.  Get a **single dashboard** by id with [dashboard()](#!/Dashboard/dashboard)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchDashboardsOpts - Optional Parameters:
  * @param "Id" (optional.Int64) -  Match dashboard id.
@@ -2830,12 +2831,12 @@ func (a *DashboardApiService) SearchDashboards(ctx _context.Context, localVarOpt
 
 // SyncLookmlDashboardOpts Optional parameters for the method 'SyncLookmlDashboard'
 type SyncLookmlDashboardOpts struct {
-    RawLocale optional.Bool
+	RawLocale optional.Bool
 }
 
 /*
 SyncLookmlDashboard Sync LookML Dashboard
-### Update all linked dashboards to match the specified LookML dashboard.  Any UDD (a dashboard which exists in the Looker database rather than as a LookML file) which has a &#x60;lookml_link_id&#x60; property value referring to a LookML dashboard&#39;s id (model::dashboardname) will be updated so that it matches the current state of the LookML dashboard.  For this operation to succeed the user must have permission to view the LookML dashboard, and only linked dashboards that the user has permission to update will be synced.  To **link** or **unlink** a UDD set the &#x60;lookml_link_id&#x60; property with [update_dashboard()](#!/Dashboard/update_dashboard) 
+### Update all linked dashboards to match the specified LookML dashboard.  Any UDD (a dashboard which exists in the Looker database rather than as a LookML file) which has a &#x60;lookml_link_id&#x60; property value referring to a LookML dashboard&#39;s id (model::dashboardname) will be updated so that it matches the current state of the LookML dashboard.  For this operation to succeed the user must have permission to view the LookML dashboard, and only linked dashboards that the user has permission to update will be synced.  To **link** or **unlink** a UDD set the &#x60;lookml_link_id&#x60; property with [update_dashboard()](#!/Dashboard/update_dashboard)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param lookmlDashboardId Id of LookML dashboard, in the form 'model::dashboardname'
  * @param dashboard Dashboard
@@ -2970,7 +2971,7 @@ func (a *DashboardApiService) SyncLookmlDashboard(ctx _context.Context, lookmlDa
 
 /*
 UpdateDashboard Update Dashboard
-### Update a dashboard  You can use this function to change the string and integer properties of a dashboard. Nested objects such as filters, dashboard elements, or dashboard layout components cannot be modified by this function - use the update functions for the respective nested object types (like [update_dashboard_filter()](#!/3.1/Dashboard/update_dashboard_filter) to change a filter) to modify nested objects referenced by a dashboard.  If you receive a 422 error response when updating a dashboard, be sure to look at the response body for information about exactly which fields are missing or contain invalid data. 
+### Update a dashboard  You can use this function to change the string and integer properties of a dashboard. Nested objects such as filters, dashboard elements, or dashboard layout components cannot be modified by this function - use the update functions for the respective nested object types (like [update_dashboard_filter()](#!/3.1/Dashboard/update_dashboard_filter) to change a filter) to modify nested objects referenced by a dashboard.  If you receive a 422 error response when updating a dashboard, be sure to look at the response body for information about exactly which fields are missing or contain invalid data.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param dashboardId Id of dashboard
  * @param dashboard Dashboard
@@ -3100,7 +3101,7 @@ func (a *DashboardApiService) UpdateDashboard(ctx _context.Context, dashboardId 
 
 // UpdateDashboardElementOpts Optional parameters for the method 'UpdateDashboardElement'
 type UpdateDashboardElementOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -3240,7 +3241,7 @@ func (a *DashboardApiService) UpdateDashboardElement(ctx _context.Context, dashb
 
 // UpdateDashboardFilterOpts Optional parameters for the method 'UpdateDashboardFilter'
 type UpdateDashboardFilterOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -3380,7 +3381,7 @@ func (a *DashboardApiService) UpdateDashboardFilter(ctx _context.Context, dashbo
 
 // UpdateDashboardLayoutOpts Optional parameters for the method 'UpdateDashboardLayout'
 type UpdateDashboardLayoutOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -3520,7 +3521,7 @@ func (a *DashboardApiService) UpdateDashboardLayout(ctx _context.Context, dashbo
 
 // UpdateDashboardLayoutComponentOpts Optional parameters for the method 'UpdateDashboardLayoutComponent'
 type UpdateDashboardLayoutComponentOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*

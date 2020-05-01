@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,7 +31,7 @@ type UserApiService service
 
 // AllUserCredentialsApi3sOpts Optional parameters for the method 'AllUserCredentialsApi3s'
 type AllUserCredentialsApi3sOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -147,7 +148,7 @@ func (a *UserApiService) AllUserCredentialsApi3s(ctx _context.Context, userId in
 
 // AllUserCredentialsEmbedsOpts Optional parameters for the method 'AllUserCredentialsEmbeds'
 type AllUserCredentialsEmbedsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -264,7 +265,7 @@ func (a *UserApiService) AllUserCredentialsEmbeds(ctx _context.Context, userId i
 
 // AllUserSessionsOpts Optional parameters for the method 'AllUserSessions'
 type AllUserSessionsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -381,16 +382,16 @@ func (a *UserApiService) AllUserSessions(ctx _context.Context, userId int64, loc
 
 // AllUsersOpts Optional parameters for the method 'AllUsers'
 type AllUsersOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Sorts optional.String
-    Ids optional.Interface
+	Fields  optional.String
+	Page    optional.Int64
+	PerPage optional.Int64
+	Sorts   optional.String
+	Ids     optional.Interface
 }
 
 /*
 AllUsers Get All Users
-### Get information about all users. 
+### Get information about all users.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllUsersOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -516,13 +517,13 @@ func (a *UserApiService) AllUsers(ctx _context.Context, localVarOptionals *AllUs
 
 // CreateUserOpts Optional parameters for the method 'CreateUser'
 type CreateUserOpts struct {
-    Fields optional.String
-    User optional.Interface
+	Fields optional.String
+	User   optional.Interface
 }
 
 /*
 CreateUser Create User
-### Create a user with the specified information. 
+### Create a user with the specified information.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateUserOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -662,8 +663,8 @@ func (a *UserApiService) CreateUser(ctx _context.Context, localVarOptionals *Cre
 
 // CreateUserCredentialsApi3Opts Optional parameters for the method 'CreateUserCredentialsApi3'
 type CreateUserCredentialsApi3Opts struct {
-    Fields optional.String
-    CredentialsApi3 optional.Interface
+	Fields          optional.String
+	CredentialsApi3 optional.Interface
 }
 
 /*
@@ -820,7 +821,7 @@ func (a *UserApiService) CreateUserCredentialsApi3(ctx _context.Context, userId 
 
 // CreateUserCredentialsEmailOpts Optional parameters for the method 'CreateUserCredentialsEmail'
 type CreateUserCredentialsEmailOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -970,13 +971,13 @@ func (a *UserApiService) CreateUserCredentialsEmail(ctx _context.Context, userId
 
 // CreateUserCredentialsEmailPasswordResetOpts Optional parameters for the method 'CreateUserCredentialsEmailPasswordReset'
 type CreateUserCredentialsEmailPasswordResetOpts struct {
-    Expires optional.Bool
-    Fields optional.String
+	Expires optional.Bool
+	Fields  optional.String
 }
 
 /*
 CreateUserCredentialsEmailPasswordReset Create Password Reset Token
-### Create a password reset token. This will create a cryptographically secure random password reset token for the user. If the user already has a password reset token then this invalidates the old token and creates a new one. The token is expressed as the &#39;password_reset_url&#39; of the user&#39;s email/password credential object. This takes an optional &#39;expires&#39; param to indicate if the new token should be an expiring token. Tokens that expire are typically used for self-service password resets for existing users. Invitation emails for new users typically are not set to expire. The expire period is always 60 minutes when expires is enabled. This method can be called with an empty body. 
+### Create a password reset token. This will create a cryptographically secure random password reset token for the user. If the user already has a password reset token then this invalidates the old token and creates a new one. The token is expressed as the &#39;password_reset_url&#39; of the user&#39;s email/password credential object. This takes an optional &#39;expires&#39; param to indicate if the new token should be an expiring token. Tokens that expire are typically used for self-service password resets for existing users. Invitation emails for new users typically are not set to expire. The expire period is always 60 minutes when expires is enabled. This method can be called with an empty body.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId Id of user
  * @param optional nil or *CreateUserCredentialsEmailPasswordResetOpts - Optional Parameters:
@@ -1092,8 +1093,8 @@ func (a *UserApiService) CreateUserCredentialsEmailPasswordReset(ctx _context.Co
 
 // CreateUserCredentialsTotpOpts Optional parameters for the method 'CreateUserCredentialsTotp'
 type CreateUserCredentialsTotpOpts struct {
-    Fields optional.String
-    CredentialsTotp optional.Interface
+	Fields          optional.String
+	CredentialsTotp optional.Interface
 }
 
 /*
@@ -1250,7 +1251,7 @@ func (a *UserApiService) CreateUserCredentialsTotp(ctx _context.Context, userId 
 
 /*
 DeleteUser Delete User
-### Delete the user with a specific id.  **DANGER** this will delete the user and all looks and other information owned by the user. 
+### Delete the user with a specific id.  **DANGER** this will delete the user and all looks and other information owned by the user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId Id of user
 @return string
@@ -1367,7 +1368,7 @@ func (a *UserApiService) DeleteUser(ctx _context.Context, userId int64) (string,
 
 /*
 DeleteUserAttributeUserValue Delete User Attribute User Value
-### Delete a user attribute value from a user&#39;s account settings.  After the user attribute value is deleted from the user&#39;s account settings, subsequent requests for the user attribute value for this user will draw from the user&#39;s groups or the default value of the user attribute. See [Get User Attribute Values](#!/User/user_attribute_user_values) for more information about how user attribute values are resolved. 
+### Delete a user attribute value from a user&#39;s account settings.  After the user attribute value is deleted from the user&#39;s account settings, subsequent requests for the user attribute value for this user will draw from the user&#39;s groups or the default value of the user attribute. See [Get User Attribute Values](#!/User/user_attribute_user_values) for more information about how user attribute values are resolved.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId Id of user
  * @param userAttributeId Id of user attribute
@@ -2631,12 +2632,12 @@ func (a *UserApiService) DeleteUserSession(ctx _context.Context, userId int64, s
 
 // MeOpts Optional parameters for the method 'Me'
 type MeOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Me Get Current User
-### Get information about the current user; i.e. the user account currently calling the API. 
+### Get information about the current user; i.e. the user account currently calling the API.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *MeOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -2736,24 +2737,24 @@ func (a *UserApiService) Me(ctx _context.Context, localVarOptionals *MeOpts) (Us
 
 // SearchUsersOpts Optional parameters for the method 'SearchUsers'
 type SearchUsersOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Sorts optional.String
-    Id optional.Int64
-    FirstName optional.String
-    LastName optional.String
-    VerifiedLookerEmployee optional.Bool
-    Email optional.String
-    IsDisabled optional.Bool
-    FilterOr optional.Bool
-    ContentMetadataId optional.Int64
-    GroupId optional.Int64
+	Fields                 optional.String
+	Page                   optional.Int64
+	PerPage                optional.Int64
+	Sorts                  optional.String
+	Id                     optional.Int64
+	FirstName              optional.String
+	LastName               optional.String
+	VerifiedLookerEmployee optional.Bool
+	Email                  optional.String
+	IsDisabled             optional.Bool
+	FilterOr               optional.Bool
+	ContentMetadataId      optional.Int64
+	GroupId                optional.Int64
 }
 
 /*
 SearchUsers Search Users
-### Search users  Returns all&lt;sup&gt;*&lt;/sup&gt; user records that match the given search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   (&lt;sup&gt;*&lt;/sup&gt;) Results are always filtered to the level of information the caller is permitted to view. Looker admins can see all user details; normal users in an open system can see names of other users but no details; normal users in a closed system can only see names of other users who are members of the same group as the user.  
+### Search users  Returns all&lt;sup&gt;*&lt;/sup&gt; user records that match the given search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   (&lt;sup&gt;*&lt;/sup&gt;) Results are always filtered to the level of information the caller is permitted to view. Looker admins can see all user details; normal users in an open system can see names of other users but no details; normal users in a closed system can only see names of other users who are members of the same group as the user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchUsersOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Include only these fields in the response
@@ -2911,21 +2912,21 @@ func (a *UserApiService) SearchUsers(ctx _context.Context, localVarOptionals *Se
 
 // SearchUsersNamesOpts Optional parameters for the method 'SearchUsersNames'
 type SearchUsersNamesOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Sorts optional.String
-    Id optional.Int64
-    FirstName optional.String
-    LastName optional.String
-    VerifiedLookerEmployee optional.Bool
-    Email optional.String
-    IsDisabled optional.Bool
+	Fields                 optional.String
+	Page                   optional.Int64
+	PerPage                optional.Int64
+	Sorts                  optional.String
+	Id                     optional.Int64
+	FirstName              optional.String
+	LastName               optional.String
+	VerifiedLookerEmployee optional.Bool
+	Email                  optional.String
+	IsDisabled             optional.Bool
 }
 
 /*
 SearchUsersNames Search User Names
-### Search for user accounts by name  Returns all user accounts where &#x60;first_name&#x60; OR &#x60;last_name&#x60; OR &#x60;email&#x60; field values match a pattern. The pattern can contain &#x60;%&#x60; and &#x60;_&#x60; wildcards as in SQL LIKE expressions.  Any additional search params will be combined into a logical AND expression. 
+### Search for user accounts by name  Returns all user accounts where &#x60;first_name&#x60; OR &#x60;last_name&#x60; OR &#x60;email&#x60; field values match a pattern. The pattern can contain &#x60;%&#x60; and &#x60;_&#x60; wildcards as in SQL LIKE expressions.  Any additional search params will be combined into a logical AND expression.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param pattern Pattern to match
  * @param optional nil or *SearchUsersNamesOpts - Optional Parameters:
@@ -3073,7 +3074,7 @@ func (a *UserApiService) SearchUsersNames(ctx _context.Context, pattern string, 
 
 /*
 SetUserAttributeUserValue Set User Attribute User Value
-### Store a custom value for a user attribute in a user&#39;s account settings.  Per-user user attribute values take precedence over group or default values. 
+### Store a custom value for a user attribute in a user&#39;s account settings.  Per-user user attribute values take precedence over group or default values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId Id of user
  * @param userAttributeId Id of user attribute
@@ -3195,12 +3196,12 @@ func (a *UserApiService) SetUserAttributeUserValue(ctx _context.Context, userId 
 
 // SetUserRolesOpts Optional parameters for the method 'SetUserRoles'
 type SetUserRolesOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 SetUserRoles Set User Roles
-### Set roles of the user with a specific id. 
+### Set roles of the user with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId id of user
  * @param requestBody array of roles ids for user
@@ -3315,12 +3316,12 @@ func (a *UserApiService) SetUserRoles(ctx _context.Context, userId int64, reques
 
 // UpdateUserOpts Optional parameters for the method 'UpdateUser'
 type UpdateUserOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 UpdateUser Update User
-### Update information about the user with a specific id. 
+### Update information about the user with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId Id of user
  * @param user User
@@ -3445,7 +3446,7 @@ func (a *UserApiService) UpdateUser(ctx _context.Context, userId int64, user Use
 
 // UpdateUserCredentialsEmailOpts Optional parameters for the method 'UpdateUserCredentialsEmail'
 type UpdateUserCredentialsEmailOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -3585,12 +3586,12 @@ func (a *UserApiService) UpdateUserCredentialsEmail(ctx _context.Context, userId
 
 // UserOpts Optional parameters for the method 'User'
 type UserOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 User Get User by Id
-### Get information about the user with a specific id.  If the caller is an admin or the caller is the user being specified, then full user information will be returned. Otherwise, a minimal &#39;public&#39; variant of the user information will be returned. This contains The user name and avatar url, but no sensitive information. 
+### Get information about the user with a specific id.  If the caller is an admin or the caller is the user being specified, then full user information will be returned. Otherwise, a minimal &#39;public&#39; variant of the user information will be returned. This contains The user name and avatar url, but no sensitive information.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId Id of user
  * @param optional nil or *UserOpts - Optional Parameters:
@@ -3702,15 +3703,15 @@ func (a *UserApiService) User(ctx _context.Context, userId int64, localVarOption
 
 // UserAttributeUserValuesOpts Optional parameters for the method 'UserAttributeUserValues'
 type UserAttributeUserValuesOpts struct {
-    Fields optional.String
-    UserAttributeIds optional.Interface
-    AllValues optional.Bool
-    IncludeUnset optional.Bool
+	Fields           optional.String
+	UserAttributeIds optional.Interface
+	AllValues        optional.Bool
+	IncludeUnset     optional.Bool
 }
 
 /*
 UserAttributeUserValues Get User Attribute Values
-### Get user attribute values for a given user.  Returns the values of specified user attributes (or all user attributes) for a certain user.  A value for each user attribute is searched for in the following locations, in this order: 1. in the user&#39;s account information 1. in groups that the user is a member of 1. the default value of the user attribute  If more than one group has a value defined for a user attribute, the group with the lowest rank wins.  The response will only include user attributes for which values were found. Use &#x60;include_unset&#x3D;true&#x60; to include empty records for user attributes with no value.  The value of all hidden user attributes will be blank. 
+### Get user attribute values for a given user.  Returns the values of specified user attributes (or all user attributes) for a certain user.  A value for each user attribute is searched for in the following locations, in this order: 1. in the user&#39;s account information 1. in groups that the user is a member of 1. the default value of the user attribute  If more than one group has a value defined for a user attribute, the group with the lowest rank wins.  The response will only include user attributes for which values were found. Use &#x60;include_unset&#x3D;true&#x60; to include empty records for user attributes with no value.  The value of all hidden user attributes will be blank.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId Id of user
  * @param optional nil or *UserAttributeUserValuesOpts - Optional Parameters:
@@ -3824,7 +3825,7 @@ func (a *UserApiService) UserAttributeUserValues(ctx _context.Context, userId in
 
 // UserCredentialsApi3Opts Optional parameters for the method 'UserCredentialsApi3'
 type UserCredentialsApi3Opts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -3943,7 +3944,7 @@ func (a *UserApiService) UserCredentialsApi3(ctx _context.Context, userId int64,
 
 // UserCredentialsEmailOpts Optional parameters for the method 'UserCredentialsEmail'
 type UserCredentialsEmailOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4060,7 +4061,7 @@ func (a *UserApiService) UserCredentialsEmail(ctx _context.Context, userId int64
 
 // UserCredentialsEmbedOpts Optional parameters for the method 'UserCredentialsEmbed'
 type UserCredentialsEmbedOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4179,7 +4180,7 @@ func (a *UserApiService) UserCredentialsEmbed(ctx _context.Context, userId int64
 
 // UserCredentialsGoogleOpts Optional parameters for the method 'UserCredentialsGoogle'
 type UserCredentialsGoogleOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4296,7 +4297,7 @@ func (a *UserApiService) UserCredentialsGoogle(ctx _context.Context, userId int6
 
 // UserCredentialsLdapOpts Optional parameters for the method 'UserCredentialsLdap'
 type UserCredentialsLdapOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4413,7 +4414,7 @@ func (a *UserApiService) UserCredentialsLdap(ctx _context.Context, userId int64,
 
 // UserCredentialsLookerOpenidOpts Optional parameters for the method 'UserCredentialsLookerOpenid'
 type UserCredentialsLookerOpenidOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4530,7 +4531,7 @@ func (a *UserApiService) UserCredentialsLookerOpenid(ctx _context.Context, userI
 
 // UserCredentialsOidcOpts Optional parameters for the method 'UserCredentialsOidc'
 type UserCredentialsOidcOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4647,7 +4648,7 @@ func (a *UserApiService) UserCredentialsOidc(ctx _context.Context, userId int64,
 
 // UserCredentialsSamlOpts Optional parameters for the method 'UserCredentialsSaml'
 type UserCredentialsSamlOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4764,7 +4765,7 @@ func (a *UserApiService) UserCredentialsSaml(ctx _context.Context, userId int64,
 
 // UserCredentialsTotpOpts Optional parameters for the method 'UserCredentialsTotp'
 type UserCredentialsTotpOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -4881,12 +4882,12 @@ func (a *UserApiService) UserCredentialsTotp(ctx _context.Context, userId int64,
 
 // UserForCredentialOpts Optional parameters for the method 'UserForCredential'
 type UserForCredentialOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 UserForCredential Get User by Credential Id
-### Get information about the user with a credential of given type with specific id.  This is used to do things like find users by their embed external_user_id. Or, find the user with a given api3 client_id, etc. The &#39;credential_type&#39; matchs the &#39;type&#39; name of the various credential types. It must be one of the values listed in the table below. The &#39;credential_id&#39; is your unique Id for the user and is specific to each type of credential.  An example using the Ruby sdk might look like:  &#x60;sdk.user_for_credential(&#39;embed&#39;, &#39;customer-4959425&#39;)&#x60;  This table shows the supported &#39;Credential Type&#39; strings. The right column is for reference; it shows which field in the given credential type is actually searched when finding a user with the supplied &#39;credential_id&#39;.  | Credential Types | Id Field Matched | | ---------------- | ---------------- | | email            | email            | | google           | google_user_id   | | saml             | saml_user_id     | | oidc             | oidc_user_id     | | ldap             | ldap_id          | | api              | token            | | api3             | client_id        | | embed            | external_user_id | | looker_openid    | email            |  NOTE: The &#39;api&#39; credential type was only used with the legacy Looker query API and is no longer supported. The credential type for API you are currently looking at is &#39;api3&#39;.  
+### Get information about the user with a credential of given type with specific id.  This is used to do things like find users by their embed external_user_id. Or, find the user with a given api3 client_id, etc. The &#39;credential_type&#39; matchs the &#39;type&#39; name of the various credential types. It must be one of the values listed in the table below. The &#39;credential_id&#39; is your unique Id for the user and is specific to each type of credential.  An example using the Ruby sdk might look like:  &#x60;sdk.user_for_credential(&#39;embed&#39;, &#39;customer-4959425&#39;)&#x60;  This table shows the supported &#39;Credential Type&#39; strings. The right column is for reference; it shows which field in the given credential type is actually searched when finding a user with the supplied &#39;credential_id&#39;.  | Credential Types | Id Field Matched | | ---------------- | ---------------- | | email            | email            | | google           | google_user_id   | | saml             | saml_user_id     | | oidc             | oidc_user_id     | | ldap             | ldap_id          | | api              | token            | | api3             | client_id        | | embed            | external_user_id | | looker_openid    | email            |  NOTE: The &#39;api&#39; credential type was only used with the legacy Looker query API and is no longer supported. The credential type for API you are currently looking at is &#39;api3&#39;.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param credentialType Type name of credential
  * @param credentialId Id of credential
@@ -5000,13 +5001,13 @@ func (a *UserApiService) UserForCredential(ctx _context.Context, credentialType 
 
 // UserRolesOpts Optional parameters for the method 'UserRoles'
 type UserRolesOpts struct {
-    Fields optional.String
-    DirectAssociationOnly optional.Bool
+	Fields                optional.String
+	DirectAssociationOnly optional.Bool
 }
 
 /*
 UserRoles Get User Roles
-### Get information about roles of a given user 
+### Get information about roles of a given user
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userId id of user
  * @param optional nil or *UserRolesOpts - Optional Parameters:
@@ -5122,7 +5123,7 @@ func (a *UserApiService) UserRoles(ctx _context.Context, userId int64, localVarO
 
 // UserSessionOpts Optional parameters for the method 'UserSession'
 type UserSessionOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*

@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,12 +31,12 @@ type RoleApiService service
 
 // AllModelSetsOpts Optional parameters for the method 'AllModelSets'
 type AllModelSetsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllModelSets Get All Model Sets
-### Get information about all model sets. 
+### Get information about all model sets.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllModelSetsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -135,12 +136,12 @@ func (a *RoleApiService) AllModelSets(ctx _context.Context, localVarOptionals *A
 
 // AllPermissionSetsOpts Optional parameters for the method 'AllPermissionSets'
 type AllPermissionSetsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllPermissionSets Get All Permission Sets
-### Get information about all permission sets. 
+### Get information about all permission sets.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllPermissionSetsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -250,7 +251,7 @@ func (a *RoleApiService) AllPermissionSets(ctx _context.Context, localVarOptiona
 
 /*
 AllPermissions Get All Permissions
-### Get all supported permissions. 
+### Get all supported permissions.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []Permission
 */
@@ -355,13 +356,13 @@ func (a *RoleApiService) AllPermissions(ctx _context.Context) ([]Permission, *_n
 
 // AllRolesOpts Optional parameters for the method 'AllRoles'
 type AllRolesOpts struct {
-    Fields optional.String
-    Ids optional.Interface
+	Fields optional.String
+	Ids    optional.Interface
 }
 
 /*
 AllRoles Get All Roles
-### Get information about all roles. 
+### Get information about all roles.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllRolesOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -475,7 +476,7 @@ func (a *RoleApiService) AllRoles(ctx _context.Context, localVarOptionals *AllRo
 
 /*
 CreateModelSet Create Model Set
-### Create a model set with the specified information. Model sets are used by Roles. 
+### Create a model set with the specified information. Model sets are used by Roles.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param modelSet ModelSet
 @return ModelSet
@@ -603,7 +604,7 @@ func (a *RoleApiService) CreateModelSet(ctx _context.Context, modelSet ModelSet)
 
 /*
 CreatePermissionSet Create Permission Set
-### Create a permission set with the specified information. Permission sets are used by Roles. 
+### Create a permission set with the specified information. Permission sets are used by Roles.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param permissionSet Permission Set
 @return PermissionSet
@@ -731,7 +732,7 @@ func (a *RoleApiService) CreatePermissionSet(ctx _context.Context, permissionSet
 
 /*
 CreateRole Create Role
-### Create a role with the specified information. 
+### Create a role with the specified information.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param role Role
 @return Role
@@ -859,7 +860,7 @@ func (a *RoleApiService) CreateRole(ctx _context.Context, role Role) (Role, *_ne
 
 /*
 DeleteModelSet Delete Model Set
-### Delete the model set with a specific id. 
+### Delete the model set with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param modelSetId id of model set
 @return string
@@ -976,7 +977,7 @@ func (a *RoleApiService) DeleteModelSet(ctx _context.Context, modelSetId int64) 
 
 /*
 DeletePermissionSet Delete Permission Set
-### Delete the permission set with a specific id. 
+### Delete the permission set with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param permissionSetId Id of permission set
 @return string
@@ -1093,7 +1094,7 @@ func (a *RoleApiService) DeletePermissionSet(ctx _context.Context, permissionSet
 
 /*
 DeleteRole Delete Role
-### Delete the role with a specific id. 
+### Delete the role with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param roleId id of role
 @return string
@@ -1210,12 +1211,12 @@ func (a *RoleApiService) DeleteRole(ctx _context.Context, roleId int64) (string,
 
 // ModelSetOpts Optional parameters for the method 'ModelSet'
 type ModelSetOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 ModelSet Get Model Set
-### Get information about the model set with a specific id. 
+### Get information about the model set with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param modelSetId Id of model set
  * @param optional nil or *ModelSetOpts - Optional Parameters:
@@ -1327,12 +1328,12 @@ func (a *RoleApiService) ModelSet(ctx _context.Context, modelSetId int64, localV
 
 // PermissionSetOpts Optional parameters for the method 'PermissionSet'
 type PermissionSetOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 PermissionSet Get Permission Set
-### Get information about the permission set with a specific id. 
+### Get information about the permission set with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param permissionSetId Id of permission set
  * @param optional nil or *PermissionSetOpts - Optional Parameters:
@@ -1444,7 +1445,7 @@ func (a *RoleApiService) PermissionSet(ctx _context.Context, permissionSetId int
 
 /*
 Role Get Role
-### Get information about the role with a specific id. 
+### Get information about the role with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param roleId id of role
 @return Role
@@ -1551,12 +1552,12 @@ func (a *RoleApiService) Role(ctx _context.Context, roleId int64) (Role, *_netht
 
 // RoleGroupsOpts Optional parameters for the method 'RoleGroups'
 type RoleGroupsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 RoleGroups Get Role Groups
-### Get information about all the groups with the role that has a specific id. 
+### Get information about all the groups with the role that has a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param roleId id of role
  * @param optional nil or *RoleGroupsOpts - Optional Parameters:
@@ -1668,13 +1669,13 @@ func (a *RoleApiService) RoleGroups(ctx _context.Context, roleId int64, localVar
 
 // RoleUsersOpts Optional parameters for the method 'RoleUsers'
 type RoleUsersOpts struct {
-    Fields optional.String
-    DirectAssociationOnly optional.Bool
+	Fields                optional.String
+	DirectAssociationOnly optional.Bool
 }
 
 /*
 RoleUsers Get Role Users
-### Get information about all the users with the role that has a specific id. 
+### Get information about all the users with the role that has a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param roleId id of user
  * @param optional nil or *RoleUsersOpts - Optional Parameters:
@@ -1790,20 +1791,20 @@ func (a *RoleApiService) RoleUsers(ctx _context.Context, roleId int64, localVarO
 
 // SearchModelSetsOpts Optional parameters for the method 'SearchModelSets'
 type SearchModelSetsOpts struct {
-    Fields optional.String
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    Id optional.Int64
-    Name optional.String
-    AllAccess optional.Bool
-    BuiltIn optional.Bool
-    FilterOr optional.Bool
+	Fields    optional.String
+	Limit     optional.Int64
+	Offset    optional.Int64
+	Sorts     optional.String
+	Id        optional.Int64
+	Name      optional.String
+	AllAccess optional.Bool
+	BuiltIn   optional.Bool
+	FilterOr  optional.Bool
 }
 
 /*
 SearchModelSets Search Model Sets
-### Search model sets Returns all model set records that match the given search criteria. If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search model sets Returns all model set records that match the given search criteria. If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchModelSetsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -1945,20 +1946,20 @@ func (a *RoleApiService) SearchModelSets(ctx _context.Context, localVarOptionals
 
 // SearchPermissionSetsOpts Optional parameters for the method 'SearchPermissionSets'
 type SearchPermissionSetsOpts struct {
-    Fields optional.String
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    Id optional.Int64
-    Name optional.String
-    AllAccess optional.Bool
-    BuiltIn optional.Bool
-    FilterOr optional.Bool
+	Fields    optional.String
+	Limit     optional.Int64
+	Offset    optional.Int64
+	Sorts     optional.String
+	Id        optional.Int64
+	Name      optional.String
+	AllAccess optional.Bool
+	BuiltIn   optional.Bool
+	FilterOr  optional.Bool
 }
 
 /*
 SearchPermissionSets Search Permission Sets
-### Search permission sets Returns all permission set records that match the given search criteria. If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search permission sets Returns all permission set records that match the given search criteria. If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchPermissionSetsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -2100,19 +2101,19 @@ func (a *RoleApiService) SearchPermissionSets(ctx _context.Context, localVarOpti
 
 // SearchRolesOpts Optional parameters for the method 'SearchRoles'
 type SearchRolesOpts struct {
-    Fields optional.String
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    Id optional.Int64
-    Name optional.String
-    BuiltIn optional.Bool
-    FilterOr optional.Bool
+	Fields   optional.String
+	Limit    optional.Int64
+	Offset   optional.Int64
+	Sorts    optional.String
+	Id       optional.Int64
+	Name     optional.String
+	BuiltIn  optional.Bool
+	FilterOr optional.Bool
 }
 
 /*
 SearchRoles Search Roles
-### Search roles  Returns all role records that match the given search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search roles  Returns all role records that match the given search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchRolesOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -2250,7 +2251,7 @@ func (a *RoleApiService) SearchRoles(ctx _context.Context, localVarOptionals *Se
 
 /*
 SetRoleGroups Update Role Groups
-### Set all groups for a role, removing all existing group associations from that role. 
+### Set all groups for a role, removing all existing group associations from that role.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param roleId Id of Role
  * @param requestBody Array of Group Ids
@@ -2380,7 +2381,7 @@ func (a *RoleApiService) SetRoleGroups(ctx _context.Context, roleId int64, reque
 
 /*
 SetRoleUsers Update Role Users
-### Set all the users of the role with a specific id. 
+### Set all the users of the role with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param roleId id of role
  * @param requestBody array of user ids for role
@@ -2520,7 +2521,7 @@ func (a *RoleApiService) SetRoleUsers(ctx _context.Context, roleId int64, reques
 
 /*
 UpdateModelSet Update Model Set
-### Update information about the model set with a specific id. 
+### Update information about the model set with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param modelSetId id of model set
  * @param modelSet ModelSet
@@ -2650,7 +2651,7 @@ func (a *RoleApiService) UpdateModelSet(ctx _context.Context, modelSetId int64, 
 
 /*
 UpdatePermissionSet Update Permission Set
-### Update information about the permission set with a specific id. 
+### Update information about the permission set with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param permissionSetId id of permission set
  * @param permissionSet Permission Set
@@ -2780,7 +2781,7 @@ func (a *RoleApiService) UpdatePermissionSet(ctx _context.Context, permissionSet
 
 /*
 UpdateRole Update Role
-### Update information about the role with a specific id. 
+### Update information about the role with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param roleId id of role
  * @param role Role

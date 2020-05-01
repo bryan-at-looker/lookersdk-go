@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,12 +31,12 @@ type ContentApiService service
 
 // AllContentMetadataAccessesOpts Optional parameters for the method 'AllContentMetadataAccesses'
 type AllContentMetadataAccessesOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllContentMetadataAccesses Get All Content Metadata Accesses
-### All content metadata access records for a content metadata item. 
+### All content metadata access records for a content metadata item.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param contentMetadataId Id of content metadata
  * @param optional nil or *AllContentMetadataAccessesOpts - Optional Parameters:
@@ -147,12 +148,12 @@ func (a *ContentApiService) AllContentMetadataAccesses(ctx _context.Context, con
 
 // AllContentMetadatasOpts Optional parameters for the method 'AllContentMetadatas'
 type AllContentMetadatasOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllContentMetadatas Get All Content Metadatas
-### Get information about all content metadata in a space. 
+### Get information about all content metadata in a space.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parentId Parent space of content.
  * @param optional nil or *AllContentMetadatasOpts - Optional Parameters:
@@ -264,7 +265,7 @@ func (a *ContentApiService) AllContentMetadatas(ctx _context.Context, parentId i
 
 // ContentFavoriteOpts Optional parameters for the method 'ContentFavorite'
 type ContentFavoriteOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -381,12 +382,12 @@ func (a *ContentApiService) ContentFavorite(ctx _context.Context, contentFavorit
 
 // ContentMetadataOpts Optional parameters for the method 'ContentMetadata'
 type ContentMetadataOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 ContentMetadata Get Content Metadata
-### Get information about an individual content metadata record. 
+### Get information about an individual content metadata record.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param contentMetadataId Id of content metadata
  * @param optional nil or *ContentMetadataOpts - Optional Parameters:
@@ -498,12 +499,12 @@ func (a *ContentApiService) ContentMetadata(ctx _context.Context, contentMetadat
 
 // ContentValidationOpts Optional parameters for the method 'ContentValidation'
 type ContentValidationOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 ContentValidation Validate Content
-### Validate All Content Requires Content Validation Labs Feature be enabled  Performs validation of all looks and dashboards Returns a list of errors found as well as metadata about the content validation run. 
+### Validate All Content Requires Content Validation Labs Feature be enabled  Performs validation of all looks and dashboards Returns a list of errors found as well as metadata about the content validation run.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ContentValidationOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -771,12 +772,12 @@ func (a *ContentApiService) CreateContentFavorite(ctx _context.Context, contentF
 
 // CreateContentMetadataAccessOpts Optional parameters for the method 'CreateContentMetadataAccess'
 type CreateContentMetadataAccessOpts struct {
-    SendBoardsNotificationEmail optional.Bool
+	SendBoardsNotificationEmail optional.Bool
 }
 
 /*
 CreateContentMetadataAccess Create Content Metadata Access
-### Create content metadata access. 
+### Create content metadata access.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param contentMetaGroupUser Content Metadata Access
  * @param optional nil or *CreateContentMetadataAccessOpts - Optional Parameters:
@@ -1036,7 +1037,7 @@ func (a *ContentApiService) DeleteContentFavorite(ctx _context.Context, contentF
 
 /*
 DeleteContentMetadataAccess Delete Content Metadata Access
-### Remove content metadata access. 
+### Remove content metadata access.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param contentMetadataAccessId Id of content metadata access
 @return string
@@ -1153,21 +1154,21 @@ func (a *ContentApiService) DeleteContentMetadataAccess(ctx _context.Context, co
 
 // SearchContentFavoritesOpts Optional parameters for the method 'SearchContentFavorites'
 type SearchContentFavoritesOpts struct {
-    Id optional.Int64
-    UserId optional.Int64
-    ContentMetadataId optional.Int64
-    DashboardId optional.Int64
-    LookId optional.Int64
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    Fields optional.String
-    FilterOr optional.Bool
+	Id                optional.Int64
+	UserId            optional.Int64
+	ContentMetadataId optional.Int64
+	DashboardId       optional.Int64
+	LookId            optional.Int64
+	Limit             optional.Int64
+	Offset            optional.Int64
+	Sorts             optional.String
+	Fields            optional.String
+	FilterOr          optional.Bool
 }
 
 /*
 SearchContentFavorites Search Favorite Contents
-### Search Favorite Content  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search Favorite Content  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchContentFavoritesOpts - Optional Parameters:
  * @param "Id" (optional.Int64) -  Match content favorite id(s)
@@ -1313,24 +1314,24 @@ func (a *ContentApiService) SearchContentFavorites(ctx _context.Context, localVa
 
 // SearchContentViewsOpts Optional parameters for the method 'SearchContentViews'
 type SearchContentViewsOpts struct {
-    ViewCount optional.Int64
-    GroupId optional.Int64
-    LookId optional.String
-    DashboardId optional.String
-    ContentMetadataId optional.Int64
-    StartOfWeekDate optional.String
-    AllTime optional.Bool
-    UserId optional.Int64
-    Fields optional.String
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    FilterOr optional.Bool
+	ViewCount         optional.Int64
+	GroupId           optional.Int64
+	LookId            optional.String
+	DashboardId       optional.String
+	ContentMetadataId optional.Int64
+	StartOfWeekDate   optional.String
+	AllTime           optional.Bool
+	UserId            optional.Int64
+	Fields            optional.String
+	Limit             optional.Int64
+	Offset            optional.Int64
+	Sorts             optional.String
+	FilterOr          optional.Bool
 }
 
 /*
 SearchContentViews Search Content Views
-### Search Content Views  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search Content Views  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchContentViewsOpts - Optional Parameters:
  * @param "ViewCount" (optional.Int64) -  Match view count
@@ -1488,7 +1489,7 @@ func (a *ContentApiService) SearchContentViews(ctx _context.Context, localVarOpt
 
 /*
 UpdateContentMetadata Update Content Metadata
-### Move a piece of content. 
+### Move a piece of content.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param contentMetadataId Id of content metadata
  * @param contentMeta Content Metadata
@@ -1618,7 +1619,7 @@ func (a *ContentApiService) UpdateContentMetadata(ctx _context.Context, contentM
 
 /*
 UpdateContentMetadataAccess Update Content Metadata Access
-### Update type of access for content metadata. 
+### Update type of access for content metadata.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param contentMetadataAccessId Id of content metadata access
  * @param contentMetaGroupUser Content Metadata Access
@@ -1748,12 +1749,12 @@ func (a *ContentApiService) UpdateContentMetadataAccess(ctx _context.Context, co
 
 // VectorThumbnailOpts Optional parameters for the method 'VectorThumbnail'
 type VectorThumbnailOpts struct {
-    Reload optional.String
+	Reload optional.String
 }
 
 /*
 VectorThumbnail Get Vector Thumbnail
-### Get a vector image representing the contents of a dashboard or look.  The returned thumbnail is an abstract representation of the contents of a dashbord or look and does not reflect the actual data displayed in the respective visualizations. 
+### Get a vector image representing the contents of a dashboard or look.  The returned thumbnail is an abstract representation of the contents of a dashbord or look and does not reflect the actual data displayed in the respective visualizations.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param type_ Either dashboard or look
  * @param resourceId ID of the dashboard or look to render

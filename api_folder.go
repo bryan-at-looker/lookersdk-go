@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,7 +31,7 @@ type FolderApiService service
 
 // AllFoldersOpts Optional parameters for the method 'AllFolders'
 type AllFoldersOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -145,7 +146,7 @@ func (a *FolderApiService) AllFolders(ctx _context.Context, localVarOptionals *A
 
 /*
 CreateFolder Create Folder
-### Create a folder with specified information.  Caller must have permission to edit the parent folder and to create folders, otherwise the request returns 404 Not Found. 
+### Create a folder with specified information.  Caller must have permission to edit the parent folder and to create folders, otherwise the request returns 404 Not Found.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createFolder Folder parameters
 @return Folder
@@ -283,7 +284,7 @@ func (a *FolderApiService) CreateFolder(ctx _context.Context, createFolder Creat
 
 /*
 DeleteFolder Delete Folder
-### Delete the folder with a specific id including any children folders. **DANGER** this will delete all looks and dashboards in the folder. 
+### Delete the folder with a specific id including any children folders. **DANGER** this will delete all looks and dashboards in the folder.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param folderId Id of folder
 @return string
@@ -400,7 +401,7 @@ func (a *FolderApiService) DeleteFolder(ctx _context.Context, folderId string) (
 
 // FolderOpts Optional parameters for the method 'Folder'
 type FolderOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -517,7 +518,7 @@ func (a *FolderApiService) Folder(ctx _context.Context, folderId string, localVa
 
 // FolderAncestorsOpts Optional parameters for the method 'FolderAncestors'
 type FolderAncestorsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -634,10 +635,10 @@ func (a *FolderApiService) FolderAncestors(ctx _context.Context, folderId string
 
 // FolderChildrenOpts Optional parameters for the method 'FolderChildren'
 type FolderChildrenOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Sorts optional.String
+	Fields  optional.String
+	Page    optional.Int64
+	PerPage optional.Int64
+	Sorts   optional.String
 }
 
 /*
@@ -766,9 +767,9 @@ func (a *FolderApiService) FolderChildren(ctx _context.Context, folderId string,
 
 // FolderChildrenSearchOpts Optional parameters for the method 'FolderChildrenSearch'
 type FolderChildrenSearchOpts struct {
-    Fields optional.String
-    Sorts optional.String
-    Name optional.String
+	Fields optional.String
+	Sorts  optional.String
+	Name   optional.String
 }
 
 /*
@@ -893,7 +894,7 @@ func (a *FolderApiService) FolderChildrenSearch(ctx _context.Context, folderId s
 
 // FolderDashboardsOpts Optional parameters for the method 'FolderDashboards'
 type FolderDashboardsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1010,7 +1011,7 @@ func (a *FolderApiService) FolderDashboards(ctx _context.Context, folderId strin
 
 // FolderLooksOpts Optional parameters for the method 'FolderLooks'
 type FolderLooksOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1127,7 +1128,7 @@ func (a *FolderApiService) FolderLooks(ctx _context.Context, folderId string, lo
 
 // FolderParentOpts Optional parameters for the method 'FolderParent'
 type FolderParentOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1244,17 +1245,17 @@ func (a *FolderApiService) FolderParent(ctx _context.Context, folderId string, l
 
 // SearchFoldersOpts Optional parameters for the method 'SearchFolders'
 type SearchFoldersOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    Name optional.String
-    Id optional.Int64
-    ParentId optional.String
-    CreatorId optional.String
-    FilterOr optional.Bool
+	Fields    optional.String
+	Page      optional.Int64
+	PerPage   optional.Int64
+	Limit     optional.Int64
+	Offset    optional.Int64
+	Sorts     optional.String
+	Name      optional.String
+	Id        optional.Int64
+	ParentId  optional.String
+	CreatorId optional.String
+	FilterOr  optional.Bool
 }
 
 /*

@@ -1,4 +1,4 @@
-module github.com/bryan-at-looker/lookersdk-go
+module github.com/bryan-at-looker/lookersdkgo
 
 require (
 	github.com/antihax/optional v1.0.0

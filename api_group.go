@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,7 +31,7 @@ type GroupApiService service
 
 /*
 AddGroupGroup Add a Group to Group
-### Adds a new group to a group. 
+### Adds a new group to a group.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param groupIdForGroupInclusion Group id to add
@@ -150,7 +151,7 @@ func (a *GroupApiService) AddGroupGroup(ctx _context.Context, groupId int64, gro
 
 /*
 AddGroupUser Add a User to Group
-### Adds a new user to a group. 
+### Adds a new user to a group.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param groupIdForGroupUserInclusion User id to add
@@ -270,12 +271,12 @@ func (a *GroupApiService) AddGroupUser(ctx _context.Context, groupId int64, grou
 
 // AllGroupGroupsOpts Optional parameters for the method 'AllGroupGroups'
 type AllGroupGroupsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllGroupGroups Get All Groups in Group
-### Get information about all the groups in a group 
+### Get information about all the groups in a group
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param optional nil or *AllGroupGroupsOpts - Optional Parameters:
@@ -387,15 +388,15 @@ func (a *GroupApiService) AllGroupGroups(ctx _context.Context, groupId int64, lo
 
 // AllGroupUsersOpts Optional parameters for the method 'AllGroupUsers'
 type AllGroupUsersOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Sorts optional.String
+	Fields  optional.String
+	Page    optional.Int64
+	PerPage optional.Int64
+	Sorts   optional.String
 }
 
 /*
 AllGroupUsers Get All Users in Group
-### Get information about all the users directly included in a group. 
+### Get information about all the users directly included in a group.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param optional nil or *AllGroupUsersOpts - Optional Parameters:
@@ -519,18 +520,18 @@ func (a *GroupApiService) AllGroupUsers(ctx _context.Context, groupId int64, loc
 
 // AllGroupsOpts Optional parameters for the method 'AllGroups'
 type AllGroupsOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Sorts optional.String
-    Ids optional.Interface
-    ContentMetadataId optional.Int64
-    CanAddToContentMetadata optional.Bool
+	Fields                  optional.String
+	Page                    optional.Int64
+	PerPage                 optional.Int64
+	Sorts                   optional.String
+	Ids                     optional.Interface
+	ContentMetadataId       optional.Int64
+	CanAddToContentMetadata optional.Bool
 }
 
 /*
 AllGroups Get All Groups
-### Get information about all groups. 
+### Get information about all groups.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllGroupsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -664,12 +665,12 @@ func (a *GroupApiService) AllGroups(ctx _context.Context, localVarOptionals *All
 
 // CreateGroupOpts Optional parameters for the method 'CreateGroup'
 type CreateGroupOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 CreateGroup Create Group
-### Creates a new group (admin only). 
+### Creates a new group (admin only).
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param group Group
  * @param optional nil or *CreateGroupOpts - Optional Parameters:
@@ -812,7 +813,7 @@ func (a *GroupApiService) CreateGroup(ctx _context.Context, group Group, localVa
 
 /*
 DeleteGroup Delete Group
-### Deletes a group (admin only). 
+### Deletes a group (admin only).
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
 @return string
@@ -929,7 +930,7 @@ func (a *GroupApiService) DeleteGroup(ctx _context.Context, groupId int64) (stri
 
 /*
 DeleteGroupFromGroup Deletes a Group from Group
-### Removes a group from a group. 
+### Removes a group from a group.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param deletingGroupId Id of group to delete
@@ -1027,7 +1028,7 @@ func (a *GroupApiService) DeleteGroupFromGroup(ctx _context.Context, groupId int
 
 /*
 DeleteGroupUser Remove a User from Group
-### Removes a user from a group. 
+### Removes a user from a group.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param userId Id of user to remove from group
@@ -1125,7 +1126,7 @@ func (a *GroupApiService) DeleteGroupUser(ctx _context.Context, groupId int64, u
 
 /*
 DeleteUserAttributeGroupValue Delete User Attribute Group Value
-### Remove a user attribute value from a group. 
+### Remove a user attribute value from a group.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param userAttributeId Id of user attribute
@@ -1213,12 +1214,12 @@ func (a *GroupApiService) DeleteUserAttributeGroupValue(ctx _context.Context, gr
 
 // GroupOpts Optional parameters for the method 'Group'
 type GroupOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Group Get Group
-### Get information about a group. 
+### Get information about a group.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param optional nil or *GroupOpts - Optional Parameters:
@@ -1330,21 +1331,21 @@ func (a *GroupApiService) Group(ctx _context.Context, groupId int64, localVarOpt
 
 // SearchGroupsOpts Optional parameters for the method 'SearchGroups'
 type SearchGroupsOpts struct {
-    Fields optional.String
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    FilterOr optional.Bool
-    Id optional.Int64
-    Name optional.String
-    ExternalGroupId optional.Bool
-    ExternallyManaged optional.Bool
-    ExternallyOrphaned optional.Bool
+	Fields             optional.String
+	Limit              optional.Int64
+	Offset             optional.Int64
+	Sorts              optional.String
+	FilterOr           optional.Bool
+	Id                 optional.Int64
+	Name               optional.String
+	ExternalGroupId    optional.Bool
+	ExternallyManaged  optional.Bool
+	ExternallyOrphaned optional.Bool
 }
 
 /*
 SearchGroups Search Groups
-### Search groups  Returns all group records that match the given search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search groups  Returns all group records that match the given search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchGroupsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -1490,7 +1491,7 @@ func (a *GroupApiService) SearchGroups(ctx _context.Context, localVarOptionals *
 
 // UpdateGroupOpts Optional parameters for the method 'UpdateGroup'
 type UpdateGroupOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
@@ -1630,7 +1631,7 @@ func (a *GroupApiService) UpdateGroup(ctx _context.Context, groupId int64, group
 
 /*
 UpdateUserAttributeGroupValue Set User Attribute Group Value
-### Set the value of a user attribute for a group.  For information about how user attribute values are calculated, see [Set User Attribute Group Values](#!/UserAttribute/set_user_attribute_group_values). 
+### Set the value of a user attribute for a group.  For information about how user attribute values are calculated, see [Set User Attribute Group Values](#!/UserAttribute/set_user_attribute_group_values).
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param groupId Id of group
  * @param userAttributeId Id of user attribute

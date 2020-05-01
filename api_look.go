@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,12 +31,12 @@ type LookApiService service
 
 // AllLooksOpts Optional parameters for the method 'AllLooks'
 type AllLooksOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllLooks Get All Looks
-### Get information about all active Looks  Returns an array of **abbreviated Look objects** describing all the looks that the caller has access to. Soft-deleted Looks are **not** included.  Get the **full details** of a specific look by id with [look(id)](#!/Look/look)  Find **soft-deleted looks** with [search_looks()](#!/Look/search_looks) 
+### Get information about all active Looks  Returns an array of **abbreviated Look objects** describing all the looks that the caller has access to. Soft-deleted Looks are **not** included.  Get the **full details** of a specific look by id with [look(id)](#!/Look/look)  Find **soft-deleted looks** with [search_looks()](#!/Look/search_looks)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllLooksOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -145,12 +146,12 @@ func (a *LookApiService) AllLooks(ctx _context.Context, localVarOptionals *AllLo
 
 // CreateLookOpts Optional parameters for the method 'CreateLook'
 type CreateLookOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 CreateLook Create Look
-### Create a Look  To create a look to display query data, first create the query with [create_query()](#!/Query/create_query) then assign the query&#39;s id to the &#x60;query_id&#x60; property in the call to &#x60;create_look()&#x60;.  To place the look into a particular space, assign the space&#39;s id to the &#x60;space_id&#x60; property in the call to &#x60;create_look()&#x60;. 
+### Create a Look  To create a look to display query data, first create the query with [create_query()](#!/Query/create_query) then assign the query&#39;s id to the &#x60;query_id&#x60; property in the call to &#x60;create_look()&#x60;.  To place the look into a particular space, assign the space&#39;s id to the &#x60;space_id&#x60; property in the call to &#x60;create_look()&#x60;.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param lookWithQuery Look
  * @param optional nil or *CreateLookOpts - Optional Parameters:
@@ -293,7 +294,7 @@ func (a *LookApiService) CreateLook(ctx _context.Context, lookWithQuery LookWith
 
 /*
 DeleteLook Delete Look
-### Permanently Delete a Look  This operation **permanently** removes a look from the Looker database.  NOTE: There is no \&quot;undo\&quot; for this kind of delete.  For information about soft-delete (which can be undone) see [update_look()](#!/Look/update_look). 
+### Permanently Delete a Look  This operation **permanently** removes a look from the Looker database.  NOTE: There is no \&quot;undo\&quot; for this kind of delete.  For information about soft-delete (which can be undone) see [update_look()](#!/Look/update_look).
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param lookId Id of look
 @return string
@@ -410,12 +411,12 @@ func (a *LookApiService) DeleteLook(ctx _context.Context, lookId int64) (string,
 
 // LookOpts Optional parameters for the method 'Look'
 type LookOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Look Get Look
-### Get a Look.  Returns detailed information about a Look and its associated Query.  
+### Get a Look.  Returns detailed information about a Look and its associated Query.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param lookId Id of look
  * @param optional nil or *LookOpts - Optional Parameters:
@@ -527,23 +528,23 @@ func (a *LookApiService) Look(ctx _context.Context, lookId int64, localVarOption
 
 // RunLookOpts Optional parameters for the method 'RunLook'
 type RunLookOpts struct {
-    Limit optional.Int64
-    ApplyFormatting optional.Bool
-    ApplyVis optional.Bool
-    Cache optional.Bool
-    ImageWidth optional.Int64
-    ImageHeight optional.Int64
-    GenerateDrillLinks optional.Bool
-    ForceProduction optional.Bool
-    CacheOnly optional.Bool
-    PathPrefix optional.String
-    RebuildPdts optional.Bool
-    ServerTableCalcs optional.Bool
+	Limit              optional.Int64
+	ApplyFormatting    optional.Bool
+	ApplyVis           optional.Bool
+	Cache              optional.Bool
+	ImageWidth         optional.Int64
+	ImageHeight        optional.Int64
+	GenerateDrillLinks optional.Bool
+	ForceProduction    optional.Bool
+	CacheOnly          optional.Bool
+	PathPrefix         optional.String
+	RebuildPdts        optional.Bool
+	ServerTableCalcs   optional.Bool
 }
 
 /*
 RunLook Run Look
-### Run a Look  Runs a given look&#39;s query and returns the results in the requested format.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query   
+### Run a Look  Runs a given look&#39;s query and returns the results in the requested format.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param lookId Id of look
  * @param resultFormat Format of result
@@ -721,28 +722,28 @@ func (a *LookApiService) RunLook(ctx _context.Context, lookId int64, resultForma
 
 // SearchLooksOpts Optional parameters for the method 'SearchLooks'
 type SearchLooksOpts struct {
-    Id optional.String
-    Title optional.String
-    Description optional.String
-    ContentFavoriteId optional.Int64
-    SpaceId optional.String
-    UserId optional.String
-    ViewCount optional.String
-    Deleted optional.Bool
-    QueryId optional.Int64
-    Curate optional.Bool
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Limit optional.Int64
-    Offset optional.Int64
-    Sorts optional.String
-    FilterOr optional.Bool
+	Id                optional.String
+	Title             optional.String
+	Description       optional.String
+	ContentFavoriteId optional.Int64
+	SpaceId           optional.String
+	UserId            optional.String
+	ViewCount         optional.String
+	Deleted           optional.Bool
+	QueryId           optional.Int64
+	Curate            optional.Bool
+	Fields            optional.String
+	Page              optional.Int64
+	PerPage           optional.Int64
+	Limit             optional.Int64
+	Offset            optional.Int64
+	Sorts             optional.String
+	FilterOr          optional.Bool
 }
 
 /*
 SearchLooks Search Looks
-### Search Looks  Returns an **array of Look objects** that match the specified search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   Get a **single look** by id with [look(id)](#!/Look/look) 
+### Search Looks  Returns an **array of Look objects** that match the specified search criteria.  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.   Get a **single look** by id with [look(id)](#!/Look/look)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchLooksOpts - Optional Parameters:
  * @param "Id" (optional.String) -  Match look id.
@@ -916,12 +917,12 @@ func (a *LookApiService) SearchLooks(ctx _context.Context, localVarOptionals *Se
 
 // UpdateLookOpts Optional parameters for the method 'UpdateLook'
 type UpdateLookOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 UpdateLook Update Look
-### Modify a Look  Use this function to modify parts of a look. Property values given in a call to &#x60;update_look&#x60; are applied to the existing look, so there&#39;s no need to include properties whose values are not changing. It&#39;s best to specify only the properties you want to change and leave everything else out of your &#x60;update_look&#x60; call. **Look properties marked &#39;read-only&#39; will be ignored.**  When a user deletes a look in the Looker UI, the look data remains in the database but is marked with a deleted flag (\&quot;soft-deleted\&quot;). Soft-deleted looks can be undeleted (by an admin) if the delete was in error.  To soft-delete a look via the API, use [update_look()](#!/Look/update_look) to change the look&#39;s &#x60;deleted&#x60; property to &#x60;true&#x60;. You can undelete a look by calling &#x60;update_look&#x60; to change the look&#39;s &#x60;deleted&#x60; property to &#x60;false&#x60;.  Soft-deleted looks are excluded from the results of [all_looks()](#!/Look/all_looks) and [search_looks()](#!/Look/search_looks), so they essentially disappear from view even though they still reside in the db. In API 3.1 and later, you can pass &#x60;deleted: true&#x60; as a parameter to [search_looks()](#!/3.1/Look/search_looks) to list soft-deleted looks.  NOTE: [delete_look()](#!/Look/delete_look) performs a \&quot;hard delete\&quot; - the look data is removed from the Looker database and destroyed. There is no \&quot;undo\&quot; for &#x60;delete_look()&#x60;. 
+### Modify a Look  Use this function to modify parts of a look. Property values given in a call to &#x60;update_look&#x60; are applied to the existing look, so there&#39;s no need to include properties whose values are not changing. It&#39;s best to specify only the properties you want to change and leave everything else out of your &#x60;update_look&#x60; call. **Look properties marked &#39;read-only&#39; will be ignored.**  When a user deletes a look in the Looker UI, the look data remains in the database but is marked with a deleted flag (\&quot;soft-deleted\&quot;). Soft-deleted looks can be undeleted (by an admin) if the delete was in error.  To soft-delete a look via the API, use [update_look()](#!/Look/update_look) to change the look&#39;s &#x60;deleted&#x60; property to &#x60;true&#x60;. You can undelete a look by calling &#x60;update_look&#x60; to change the look&#39;s &#x60;deleted&#x60; property to &#x60;false&#x60;.  Soft-deleted looks are excluded from the results of [all_looks()](#!/Look/all_looks) and [search_looks()](#!/Look/search_looks), so they essentially disappear from view even though they still reside in the db. In API 3.1 and later, you can pass &#x60;deleted: true&#x60; as a parameter to [search_looks()](#!/3.1/Look/search_looks) to list soft-deleted looks.  NOTE: [delete_look()](#!/Look/delete_look) performs a \&quot;hard delete\&quot; - the look data is removed from the Looker database and destroyed. There is no \&quot;undo\&quot; for &#x60;delete_look()&#x60;.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param lookId Id of look
  * @param lookWithQuery Look

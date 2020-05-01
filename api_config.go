@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,7 +31,7 @@ type ConfigApiService service
 
 /*
 AllLegacyFeatures Get All Legacy Features
-### Get all legacy features. 
+### Get all legacy features.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []LegacyFeature
 */
@@ -135,7 +136,7 @@ func (a *ConfigApiService) AllLegacyFeatures(ctx _context.Context) ([]LegacyFeat
 
 /*
 AllLocales Get All Locales
-### Get a list of locales that Looker supports. 
+### Get a list of locales that Looker supports.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []Locale
 */
@@ -240,7 +241,7 @@ func (a *ConfigApiService) AllLocales(ctx _context.Context) ([]Locale, *_nethttp
 
 /*
 AllTimezones Get All Timezones
-### Get a list of timezones that Looker supports (e.g. useful for scheduling tasks). 
+### Get a list of timezones that Looker supports (e.g. useful for scheduling tasks).
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return []Timezone
 */
@@ -345,7 +346,7 @@ func (a *ConfigApiService) AllTimezones(ctx _context.Context) ([]Timezone, *_net
 
 /*
 BackupConfiguration Get Backup Configuration
-### Get the current Looker internal database backup configuration. 
+### Get the current Looker internal database backup configuration.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return BackupConfiguration
 */
@@ -555,7 +556,7 @@ func (a *ConfigApiService) CreateDigestEmailSend(ctx _context.Context) (DigestEm
 
 /*
 CustomWelcomeEmail Get Custom Welcome Email
-### Get the current status and content of custom welcome emails 
+### Get the current status and content of custom welcome emails
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return CustomWelcomeEmail
 */
@@ -660,7 +661,7 @@ func (a *ConfigApiService) CustomWelcomeEmail(ctx _context.Context) (CustomWelco
 
 /*
 DigestEmailsEnabled Get Digest_emails
-### Retrieve the value for whether or not digest emails is enabled 
+### Retrieve the value for whether or not digest emails is enabled
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return DigestEmails
 */
@@ -765,7 +766,7 @@ func (a *ConfigApiService) DigestEmailsEnabled(ctx _context.Context) (DigestEmai
 
 /*
 InternalHelpResources Get Internal Help Resources
-### Get and set the options for internal help resources 
+### Get and set the options for internal help resources
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return InternalHelpResources
 */
@@ -870,7 +871,7 @@ func (a *ConfigApiService) InternalHelpResources(ctx _context.Context) (Internal
 
 /*
 InternalHelpResourcesContent Get Internal Help Resources Content
-### Set the menu item name and content for internal help resources 
+### Set the menu item name and content for internal help resources
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return InternalHelpResourcesContent
 */
@@ -975,7 +976,7 @@ func (a *ConfigApiService) InternalHelpResourcesContent(ctx _context.Context) (I
 
 /*
 LegacyFeature Get Legacy Feature
-### Get information about the legacy feature with a specific id. 
+### Get information about the legacy feature with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param legacyFeatureId id of legacy feature
 @return LegacyFeature
@@ -1082,7 +1083,7 @@ func (a *ConfigApiService) LegacyFeature(ctx _context.Context, legacyFeatureId i
 
 /*
 UpdateBackupConfiguration Update Backup Configuration
-### Update the Looker internal database backup configuration. 
+### Update the Looker internal database backup configuration.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param backupConfiguration Options for Backup Configuration
 @return BackupConfiguration
@@ -1200,12 +1201,12 @@ func (a *ConfigApiService) UpdateBackupConfiguration(ctx _context.Context, backu
 
 // UpdateCustomWelcomeEmailOpts Optional parameters for the method 'UpdateCustomWelcomeEmail'
 type UpdateCustomWelcomeEmailOpts struct {
-    SendTestWelcomeEmail optional.Bool
+	SendTestWelcomeEmail optional.Bool
 }
 
 /*
 UpdateCustomWelcomeEmail Update Custom Welcome Email Content
-Update custom welcome email setting and values. Optionally send a test email with the new content to the currently logged in user. 
+Update custom welcome email setting and values. Optionally send a test email with the new content to the currently logged in user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customWelcomeEmail Custom Welcome Email setting and value to save
  * @param optional nil or *UpdateCustomWelcomeEmailOpts - Optional Parameters:
@@ -1337,8 +1338,8 @@ func (a *ConfigApiService) UpdateCustomWelcomeEmail(ctx _context.Context, custom
 }
 
 /*
-UpdateCustomWelcomeEmailTest Send a test welcome email to the currently logged in user with the supplied content 
-Requests to this endpoint will send a welcome email with the custom content provided in the body to the currently logged in user. 
+UpdateCustomWelcomeEmailTest Send a test welcome email to the currently logged in user with the supplied content
+Requests to this endpoint will send a welcome email with the custom content provided in the body to the currently logged in user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param welcomeEmailTest Body of the email to be sent.
 @return WelcomeEmailTest
@@ -1466,7 +1467,7 @@ func (a *ConfigApiService) UpdateCustomWelcomeEmailTest(ctx _context.Context, we
 
 /*
 UpdateDigestEmailsEnabled Update Digest_emails
-### Update the setting for enabling/disabling digest emails 
+### Update the setting for enabling/disabling digest emails
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param digestEmails Digest_emails
 @return DigestEmails
@@ -1594,7 +1595,7 @@ func (a *ConfigApiService) UpdateDigestEmailsEnabled(ctx _context.Context, diges
 
 /*
 UpdateInternalHelpResources Update internal help resources configuration
-Update internal help resources settings 
+Update internal help resources settings
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param internalHelpResources Custom Welcome Email
 @return InternalHelpResources
@@ -1722,7 +1723,7 @@ func (a *ConfigApiService) UpdateInternalHelpResources(ctx _context.Context, int
 
 /*
 UpdateInternalHelpResourcesContent Update internal help resources content
-Update internal help resources content 
+Update internal help resources content
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param internalHelpResourcesContent Internal Help Resources Content
 @return InternalHelpResourcesContent
@@ -1850,7 +1851,7 @@ func (a *ConfigApiService) UpdateInternalHelpResourcesContent(ctx _context.Conte
 
 /*
 UpdateLegacyFeature Update Legacy Feature
-### Update information about the legacy feature with a specific id. 
+### Update information about the legacy feature with a specific id.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param legacyFeatureId id of legacy feature
  * @param legacyFeature Legacy Feature
@@ -1980,7 +1981,7 @@ func (a *ConfigApiService) UpdateLegacyFeature(ctx _context.Context, legacyFeatu
 
 /*
 UpdateWhitelabelConfiguration Update Whitelabel configuration
-### Update the whitelabel configuration 
+### Update the whitelabel configuration
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param whitelabelConfiguration Whitelabel configuration
 @return WhitelabelConfiguration
@@ -2108,12 +2109,12 @@ func (a *ConfigApiService) UpdateWhitelabelConfiguration(ctx _context.Context, w
 
 // VersionsOpts Optional parameters for the method 'Versions'
 type VersionsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Versions Get ApiVersion
-### Get information about all API versions supported by this Looker instance. 
+### Get information about all API versions supported by this Looker instance.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *VersionsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -2223,12 +2224,12 @@ func (a *ConfigApiService) Versions(ctx _context.Context, localVarOptionals *Ver
 
 // WhitelabelConfigurationOpts Optional parameters for the method 'WhitelabelConfiguration'
 type WhitelabelConfigurationOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 WhitelabelConfiguration Get Whitelabel configuration
-### This feature is enabled only by special license. ### Gets the whitelabel configuration, which includes hiding documentation links, custom favicon uploading, etc. 
+### This feature is enabled only by special license. ### Gets the whitelabel configuration, which includes hiding documentation links, custom favicon uploading, etc.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *WhitelabelConfigurationOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.

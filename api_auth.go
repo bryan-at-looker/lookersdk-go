@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,12 +31,12 @@ type AuthApiService service
 
 // AllUserLoginLockoutsOpts Optional parameters for the method 'AllUserLoginLockouts'
 type AllUserLoginLockoutsOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllUserLoginLockouts Get All User Login Lockouts
-### Get currently locked-out users. 
+### Get currently locked-out users.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllUserLoginLockoutsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Include only these fields in the response
@@ -145,7 +146,7 @@ func (a *AuthApiService) AllUserLoginLockouts(ctx _context.Context, localVarOpti
 
 /*
 CreateOidcTestConfig Create OIDC Test Configuration
-### Create a OIDC test configuration. 
+### Create a OIDC test configuration.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param oidcConfig OIDC test config
 @return OidcConfig
@@ -263,7 +264,7 @@ func (a *AuthApiService) CreateOidcTestConfig(ctx _context.Context, oidcConfig O
 
 /*
 CreateSamlTestConfig Create SAML Test Configuration
-### Create a SAML test configuration. 
+### Create a SAML test configuration.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param samlConfig SAML test config
 @return SamlConfig
@@ -381,7 +382,7 @@ func (a *AuthApiService) CreateSamlTestConfig(ctx _context.Context, samlConfig S
 
 /*
 CreateSsoEmbedUrl Create SSO Embed Url
-### Create SSO Embed URL  Creates an SSO embed URL and cryptographically signs it with an embed secret. This signed URL can then be used to instantiate a Looker embed session in a PBL web application. Do not make any modifications to this URL - any change may invalidate the signature and cause the URL to fail to load a Looker embed session.  A signed SSO embed URL can only be used once. After it has been used to request a page from the Looker server, the URL is invalid. Future requests using the same URL will fail. This is to prevent &#39;replay attacks&#39;.  The &#x60;target_url&#x60; property must be a complete URL of a Looker UI page - scheme, hostname, path and query params. To load a dashboard with id 56 and with a filter of &#x60;Date&#x3D;1 years&#x60;, the looker URL would look like &#x60;https:/myname.looker.com/dashboards/56?Date&#x3D;1%20years&#x60;. The best way to obtain this target_url is to navigate to the desired Looker page in your web browser, copy the URL shown in the browser address bar and paste it into the &#x60;target_url&#x60; property as a quoted string value in this API request.  Permissions for the embed user are defined by the groups in which the embed user is a member (group_ids property) and the lists of models and permissions assigned to the embed user. At a minimum, you must provide values for either the group_ids property, or both the models and permissions properties. These properties are additive; an embed user can be a member of certain groups AND be granted access to models and permissions.  The embed user&#39;s access is the union of permissions granted by the group_ids, models, and permissions properties.  This function does not strictly require all group_ids, user attribute names, or model names to exist at the moment the SSO embed url is created. Unknown group_id, user attribute names or model names will be passed through to the output URL. To diagnose potential problems with an SSO embed URL, you can copy the signed URL into the Embed URI Validator text box in &#x60;&lt;your looker instance&gt;/admin/embed&#x60;.  The &#x60;secret_id&#x60; parameter is optional. If specified, its value must be the id of an active secret defined in the Looker instance. if not specified, the URL will be signed using the newest active secret defined in the Looker instance.  #### Security Note Protect this signed URL as you would an access token or password credentials - do not write it to disk, do not pass it to a third party, and only pass it through a secure HTTPS encrypted transport. 
+### Create SSO Embed URL  Creates an SSO embed URL and cryptographically signs it with an embed secret. This signed URL can then be used to instantiate a Looker embed session in a PBL web application. Do not make any modifications to this URL - any change may invalidate the signature and cause the URL to fail to load a Looker embed session.  A signed SSO embed URL can only be used once. After it has been used to request a page from the Looker server, the URL is invalid. Future requests using the same URL will fail. This is to prevent &#39;replay attacks&#39;.  The &#x60;target_url&#x60; property must be a complete URL of a Looker UI page - scheme, hostname, path and query params. To load a dashboard with id 56 and with a filter of &#x60;Date&#x3D;1 years&#x60;, the looker URL would look like &#x60;https:/myname.looker.com/dashboards/56?Date&#x3D;1%20years&#x60;. The best way to obtain this target_url is to navigate to the desired Looker page in your web browser, copy the URL shown in the browser address bar and paste it into the &#x60;target_url&#x60; property as a quoted string value in this API request.  Permissions for the embed user are defined by the groups in which the embed user is a member (group_ids property) and the lists of models and permissions assigned to the embed user. At a minimum, you must provide values for either the group_ids property, or both the models and permissions properties. These properties are additive; an embed user can be a member of certain groups AND be granted access to models and permissions.  The embed user&#39;s access is the union of permissions granted by the group_ids, models, and permissions properties.  This function does not strictly require all group_ids, user attribute names, or model names to exist at the moment the SSO embed url is created. Unknown group_id, user attribute names or model names will be passed through to the output URL. To diagnose potential problems with an SSO embed URL, you can copy the signed URL into the Embed URI Validator text box in &#x60;&lt;your looker instance&gt;/admin/embed&#x60;.  The &#x60;secret_id&#x60; parameter is optional. If specified, its value must be the id of an active secret defined in the Looker instance. if not specified, the URL will be signed using the newest active secret defined in the Looker instance.  #### Security Note Protect this signed URL as you would an access token or password credentials - do not write it to disk, do not pass it to a third party, and only pass it through a secure HTTPS encrypted transport.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param embedSsoUrlParams SSO parameters
 @return EmbedSsoUrl
@@ -499,7 +500,7 @@ func (a *AuthApiService) CreateSsoEmbedUrl(ctx _context.Context, embedSsoUrlPara
 
 /*
 DeleteOidcTestConfig Delete OIDC Test Configuration
-### Delete a OIDC test configuration. 
+### Delete a OIDC test configuration.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param testSlug Slug of test config
 @return string
@@ -606,7 +607,7 @@ func (a *AuthApiService) DeleteOidcTestConfig(ctx _context.Context, testSlug str
 
 /*
 DeleteSamlTestConfig Delete SAML Test Configuration
-### Delete a SAML test configuration. 
+### Delete a SAML test configuration.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param testSlug Slug of test config
 @return string
@@ -713,7 +714,7 @@ func (a *AuthApiService) DeleteSamlTestConfig(ctx _context.Context, testSlug str
 
 /*
 DeleteUserLoginLockout Delete User Login Lockout
-### Removes login lockout for the associated user. 
+### Removes login lockout for the associated user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param key The key associated with the locked user
 @return string
@@ -830,7 +831,7 @@ func (a *AuthApiService) DeleteUserLoginLockout(ctx _context.Context, key string
 
 /*
 FetchAndParseSamlIdpMetadata Parse SAML IdP Url
-### Fetch the given url and parse it as a SAML IdP metadata document and return the result. Note that this requires that the url be public or at least at a location where the Looker instance can fetch it without requiring any special authentication. 
+### Fetch the given url and parse it as a SAML IdP metadata document and return the result. Note that this requires that the url be public or at least at a location where the Looker instance can fetch it without requiring any special authentication.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body SAML IdP metadata public url
 @return SamlMetadataParseResult
@@ -938,7 +939,7 @@ func (a *AuthApiService) FetchAndParseSamlIdpMetadata(ctx _context.Context, body
 
 /*
 ForcePasswordResetAtNextLoginForAllUsers Force password reset
-### Force all credentials_email users to reset their login passwords upon their next login. 
+### Force all credentials_email users to reset their login passwords upon their next login.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return string
 */
@@ -1063,7 +1064,7 @@ func (a *AuthApiService) ForcePasswordResetAtNextLoginForAllUsers(ctx _context.C
 
 /*
 LdapConfig Get LDAP Configuration
-### Get the LDAP configuration.  Looker can be optionally configured to authenticate users against an Active Directory or other LDAP directory server. LDAP setup requires coordination with an administrator of that directory server.  Only Looker administrators can read and update the LDAP configuration.  Configuring LDAP impacts authentication for all users. This configuration should be done carefully.  Looker maintains a single LDAP configuration. It can be read and updated.       Updates only succeed if the new state will be valid (in the sense that all required fields are populated);       it is up to you to ensure that the configuration is appropriate and correct).  LDAP is enabled or disabled for Looker using the **enabled** field.  Looker will never return an **auth_password** field. That value can be set, but never retrieved.  See the [Looker LDAP docs](https://www.looker.com/docs/r/api/ldap_setup) for additional information. 
+### Get the LDAP configuration.  Looker can be optionally configured to authenticate users against an Active Directory or other LDAP directory server. LDAP setup requires coordination with an administrator of that directory server.  Only Looker administrators can read and update the LDAP configuration.  Configuring LDAP impacts authentication for all users. This configuration should be done carefully.  Looker maintains a single LDAP configuration. It can be read and updated.       Updates only succeed if the new state will be valid (in the sense that all required fields are populated);       it is up to you to ensure that the configuration is appropriate and correct).  LDAP is enabled or disabled for Looker using the **enabled** field.  Looker will never return an **auth_password** field. That value can be set, but never retrieved.  See the [Looker LDAP docs](https://www.looker.com/docs/r/api/ldap_setup) for additional information.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return LdapConfig
 */
@@ -1158,7 +1159,7 @@ func (a *AuthApiService) LdapConfig(ctx _context.Context) (LdapConfig, *_nethttp
 
 /*
 OidcConfig Get OIDC Configuration
-### Get the OIDC configuration.  Looker can be optionally configured to authenticate users against an OpenID Connect (OIDC) authentication server. OIDC setup requires coordination with an administrator of that server.  Only Looker administrators can read and update the OIDC configuration.  Configuring OIDC impacts authentication for all users. This configuration should be done carefully.  Looker maintains a single OIDC configuation. It can be read and updated.       Updates only succeed if the new state will be valid (in the sense that all required fields are populated);       it is up to you to ensure that the configuration is appropriate and correct).  OIDC is enabled or disabled for Looker using the **enabled** field. 
+### Get the OIDC configuration.  Looker can be optionally configured to authenticate users against an OpenID Connect (OIDC) authentication server. OIDC setup requires coordination with an administrator of that server.  Only Looker administrators can read and update the OIDC configuration.  Configuring OIDC impacts authentication for all users. This configuration should be done carefully.  Looker maintains a single OIDC configuation. It can be read and updated.       Updates only succeed if the new state will be valid (in the sense that all required fields are populated);       it is up to you to ensure that the configuration is appropriate and correct).  OIDC is enabled or disabled for Looker using the **enabled** field.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return OidcConfig
 */
@@ -1253,7 +1254,7 @@ func (a *AuthApiService) OidcConfig(ctx _context.Context) (OidcConfig, *_nethttp
 
 /*
 OidcTestConfig Get OIDC Test Configuration
-### Get a OIDC test configuration by test_slug. 
+### Get a OIDC test configuration by test_slug.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param testSlug Slug of test config
 @return OidcConfig
@@ -1350,7 +1351,7 @@ func (a *AuthApiService) OidcTestConfig(ctx _context.Context, testSlug string) (
 
 /*
 ParseSamlIdpMetadata Parse SAML IdP XML
-### Parse the given xml as a SAML IdP metadata document and return the result. 
+### Parse the given xml as a SAML IdP metadata document and return the result.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body SAML IdP metadata xml
 @return SamlMetadataParseResult
@@ -1458,7 +1459,7 @@ func (a *AuthApiService) ParseSamlIdpMetadata(ctx _context.Context, body string)
 
 /*
 PasswordConfig Get Password Config
-### Get password config. 
+### Get password config.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return PasswordConfig
 */
@@ -1563,7 +1564,7 @@ func (a *AuthApiService) PasswordConfig(ctx _context.Context) (PasswordConfig, *
 
 /*
 SamlConfig Get SAML Configuration
-### Get the SAML configuration.  Looker can be optionally configured to authenticate users against a SAML authentication server. SAML setup requires coordination with an administrator of that server.  Only Looker administrators can read and update the SAML configuration.  Configuring SAML impacts authentication for all users. This configuration should be done carefully.  Looker maintains a single SAML configuation. It can be read and updated.       Updates only succeed if the new state will be valid (in the sense that all required fields are populated);       it is up to you to ensure that the configuration is appropriate and correct).  SAML is enabled or disabled for Looker using the **enabled** field. 
+### Get the SAML configuration.  Looker can be optionally configured to authenticate users against a SAML authentication server. SAML setup requires coordination with an administrator of that server.  Only Looker administrators can read and update the SAML configuration.  Configuring SAML impacts authentication for all users. This configuration should be done carefully.  Looker maintains a single SAML configuation. It can be read and updated.       Updates only succeed if the new state will be valid (in the sense that all required fields are populated);       it is up to you to ensure that the configuration is appropriate and correct).  SAML is enabled or disabled for Looker using the **enabled** field.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return SamlConfig
 */
@@ -1658,7 +1659,7 @@ func (a *AuthApiService) SamlConfig(ctx _context.Context) (SamlConfig, *_nethttp
 
 /*
 SamlTestConfig Get SAML Test Configuration
-### Get a SAML test configuration by test_slug. 
+### Get a SAML test configuration by test_slug.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param testSlug Slug of test config
 @return SamlConfig
@@ -1755,20 +1756,20 @@ func (a *AuthApiService) SamlTestConfig(ctx _context.Context, testSlug string) (
 
 // SearchUserLoginLockoutsOpts Optional parameters for the method 'SearchUserLoginLockouts'
 type SearchUserLoginLockoutsOpts struct {
-    Fields optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Sorts optional.String
-    AuthType optional.String
-    FullName optional.String
-    Email optional.String
-    RemoteId optional.String
-    FilterOr optional.Bool
+	Fields   optional.String
+	Page     optional.Int64
+	PerPage  optional.Int64
+	Sorts    optional.String
+	AuthType optional.String
+	FullName optional.String
+	Email    optional.String
+	RemoteId optional.String
+	FilterOr optional.Bool
 }
 
 /*
 SearchUserLoginLockouts Search User Login Lockouts
-### Search currently locked-out users. 
+### Search currently locked-out users.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchUserLoginLockoutsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Include only these fields in the response
@@ -1910,7 +1911,7 @@ func (a *AuthApiService) SearchUserLoginLockouts(ctx _context.Context, localVarO
 
 /*
 SessionConfig Get Session Config
-### Get session config. 
+### Get session config.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return SessionConfig
 */
@@ -2015,7 +2016,7 @@ func (a *AuthApiService) SessionConfig(ctx _context.Context) (SessionConfig, *_n
 
 /*
 TestLdapConfigAuth Test LDAP Auth
-### Test the connection authentication settings for an LDAP configuration.  This tests that the connection is possible and that a &#39;server&#39; account to be used by Looker can       authenticate to the LDAP server given connection and authentication information.  **connection_host**, **connection_port**, and **auth_username**, are required.       **connection_tls** and **auth_password** are optional.  Example: &#x60;&#x60;&#x60;json {   \&quot;connection_host\&quot;: \&quot;ldap.example.com\&quot;,   \&quot;connection_port\&quot;: \&quot;636\&quot;,   \&quot;connection_tls\&quot;: true,   \&quot;auth_username\&quot;: \&quot;cn&#x3D;looker,dc&#x3D;example,dc&#x3D;com\&quot;,   \&quot;auth_password\&quot;: \&quot;secret\&quot; } &#x60;&#x60;&#x60;  Looker will never return an **auth_password**. If this request omits the **auth_password** field, then       the **auth_password** value from the active config (if present) will be used for the test.  The active LDAP settings are not modified.  
+### Test the connection authentication settings for an LDAP configuration.  This tests that the connection is possible and that a &#39;server&#39; account to be used by Looker can       authenticate to the LDAP server given connection and authentication information.  **connection_host**, **connection_port**, and **auth_username**, are required.       **connection_tls** and **auth_password** are optional.  Example: &#x60;&#x60;&#x60;json {   \&quot;connection_host\&quot;: \&quot;ldap.example.com\&quot;,   \&quot;connection_port\&quot;: \&quot;636\&quot;,   \&quot;connection_tls\&quot;: true,   \&quot;auth_username\&quot;: \&quot;cn&#x3D;looker,dc&#x3D;example,dc&#x3D;com\&quot;,   \&quot;auth_password\&quot;: \&quot;secret\&quot; } &#x60;&#x60;&#x60;  Looker will never return an **auth_password**. If this request omits the **auth_password** field, then       the **auth_password** value from the active config (if present) will be used for the test.  The active LDAP settings are not modified.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapConfig LDAP Config
 @return LdapConfigTestResult
@@ -2133,7 +2134,7 @@ func (a *AuthApiService) TestLdapConfigAuth(ctx _context.Context, ldapConfig Lda
 
 /*
 TestLdapConfigConnection Test LDAP Connection
-### Test the connection settings for an LDAP configuration.  This tests that the connection is possible given a connection_host and connection_port.  **connection_host** and **connection_port** are required. **connection_tls** is optional.  Example: &#x60;&#x60;&#x60;json {   \&quot;connection_host\&quot;: \&quot;ldap.example.com\&quot;,   \&quot;connection_port\&quot;: \&quot;636\&quot;,   \&quot;connection_tls\&quot;: true } &#x60;&#x60;&#x60;  No authentication to the LDAP server is attempted.  The active LDAP settings are not modified. 
+### Test the connection settings for an LDAP configuration.  This tests that the connection is possible given a connection_host and connection_port.  **connection_host** and **connection_port** are required. **connection_tls** is optional.  Example: &#x60;&#x60;&#x60;json {   \&quot;connection_host\&quot;: \&quot;ldap.example.com\&quot;,   \&quot;connection_port\&quot;: \&quot;636\&quot;,   \&quot;connection_tls\&quot;: true } &#x60;&#x60;&#x60;  No authentication to the LDAP server is attempted.  The active LDAP settings are not modified.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapConfig LDAP Config
 @return LdapConfigTestResult
@@ -2251,7 +2252,7 @@ func (a *AuthApiService) TestLdapConfigConnection(ctx _context.Context, ldapConf
 
 /*
 TestLdapConfigUserAuth Test LDAP User Auth
-### Test the user authentication settings for an LDAP configuration.  This test accepts a full LDAP configuration along with a username/password pair and attempts to       authenticate the user with the LDAP server. The configuration is validated before attempting the       authentication.  Looker will never return an **auth_password**. If this request omits the **auth_password** field, then       the **auth_password** value from the active config (if present) will be used for the test.  **test_ldap_user** and **test_ldap_password** are required.  The active LDAP settings are not modified.  
+### Test the user authentication settings for an LDAP configuration.  This test accepts a full LDAP configuration along with a username/password pair and attempts to       authenticate the user with the LDAP server. The configuration is validated before attempting the       authentication.  Looker will never return an **auth_password**. If this request omits the **auth_password** field, then       the **auth_password** value from the active config (if present) will be used for the test.  **test_ldap_user** and **test_ldap_password** are required.  The active LDAP settings are not modified.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapConfig LDAP Config
 @return LdapConfigTestResult
@@ -2369,7 +2370,7 @@ func (a *AuthApiService) TestLdapConfigUserAuth(ctx _context.Context, ldapConfig
 
 /*
 TestLdapConfigUserInfo Test LDAP User Info
-### Test the user authentication settings for an LDAP configuration without authenticating the user.  This test will let you easily test the mapping for user properties and roles for any user without      needing to authenticate as that user.  This test accepts a full LDAP configuration along with a username and attempts to find the full info      for the user from the LDAP server without actually authenticating the user. So, user password is not      required.The configuration is validated before attempting to contact the server.  **test_ldap_user** is required.  The active LDAP settings are not modified.  
+### Test the user authentication settings for an LDAP configuration without authenticating the user.  This test will let you easily test the mapping for user properties and roles for any user without      needing to authenticate as that user.  This test accepts a full LDAP configuration along with a username and attempts to find the full info      for the user from the LDAP server without actually authenticating the user. So, user password is not      required.The configuration is validated before attempting to contact the server.  **test_ldap_user** is required.  The active LDAP settings are not modified.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapConfig LDAP Config
 @return LdapConfigTestResult
@@ -2487,7 +2488,7 @@ func (a *AuthApiService) TestLdapConfigUserInfo(ctx _context.Context, ldapConfig
 
 /*
 UpdateLdapConfig Update LDAP Configuration
-### Update the LDAP configuration.  Configuring LDAP impacts authentication for all users. This configuration should be done carefully.  Only Looker administrators can read and update the LDAP configuration.  LDAP is enabled or disabled for Looker using the **enabled** field.  It is **highly** recommended that any LDAP setting changes be tested using the APIs below before being set globally.  See the [Looker LDAP docs](https://www.looker.com/docs/r/api/ldap_setup) for additional information. 
+### Update the LDAP configuration.  Configuring LDAP impacts authentication for all users. This configuration should be done carefully.  Only Looker administrators can read and update the LDAP configuration.  LDAP is enabled or disabled for Looker using the **enabled** field.  It is **highly** recommended that any LDAP setting changes be tested using the APIs below before being set globally.  See the [Looker LDAP docs](https://www.looker.com/docs/r/api/ldap_setup) for additional information.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapConfig LDAP Config
 @return LdapConfig
@@ -2605,7 +2606,7 @@ func (a *AuthApiService) UpdateLdapConfig(ctx _context.Context, ldapConfig LdapC
 
 /*
 UpdateOidcConfig Update OIDC Configuration
-### Update the OIDC configuration.  Configuring OIDC impacts authentication for all users. This configuration should be done carefully.  Only Looker administrators can read and update the OIDC configuration.  OIDC is enabled or disabled for Looker using the **enabled** field.  It is **highly** recommended that any OIDC setting changes be tested using the APIs below before being set globally. 
+### Update the OIDC configuration.  Configuring OIDC impacts authentication for all users. This configuration should be done carefully.  Only Looker administrators can read and update the OIDC configuration.  OIDC is enabled or disabled for Looker using the **enabled** field.  It is **highly** recommended that any OIDC setting changes be tested using the APIs below before being set globally.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param oidcConfig OIDC Config
 @return OidcConfig
@@ -2723,7 +2724,7 @@ func (a *AuthApiService) UpdateOidcConfig(ctx _context.Context, oidcConfig OidcC
 
 /*
 UpdatePasswordConfig Update Password Config
-### Update password config. 
+### Update password config.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param passwordConfig Password Config
 @return PasswordConfig
@@ -2851,7 +2852,7 @@ func (a *AuthApiService) UpdatePasswordConfig(ctx _context.Context, passwordConf
 
 /*
 UpdateSamlConfig Update SAML Configuration
-### Update the SAML configuration.  Configuring SAML impacts authentication for all users. This configuration should be done carefully.  Only Looker administrators can read and update the SAML configuration.  SAML is enabled or disabled for Looker using the **enabled** field.  It is **highly** recommended that any SAML setting changes be tested using the APIs below before being set globally. 
+### Update the SAML configuration.  Configuring SAML impacts authentication for all users. This configuration should be done carefully.  Only Looker administrators can read and update the SAML configuration.  SAML is enabled or disabled for Looker using the **enabled** field.  It is **highly** recommended that any SAML setting changes be tested using the APIs below before being set globally.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param samlConfig SAML Config
 @return SamlConfig
@@ -2969,7 +2970,7 @@ func (a *AuthApiService) UpdateSamlConfig(ctx _context.Context, samlConfig SamlC
 
 /*
 UpdateSessionConfig Update Session Config
-### Update session config. 
+### Update session config.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param sessionConfig Session Config
 @return SessionConfig

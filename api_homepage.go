@@ -1,22 +1,23 @@
 /*
  * Looker API 3.1 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.  
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
  *
  * API version: 3.1.0
  * Contact: support@looker.com
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
-package looker
+package lookersdkgo
 
 import (
 	_context "context"
+	"fmt"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"fmt"
 	"strings"
+
 	"github.com/antihax/optional"
 )
 
@@ -30,14 +31,14 @@ type HomepageApiService service
 
 // AllHomepageItemsOpts Optional parameters for the method 'AllHomepageItems'
 type AllHomepageItemsOpts struct {
-    Fields optional.String
-    Sorts optional.String
-    HomepageSectionId optional.String
+	Fields            optional.String
+	Sorts             optional.String
+	HomepageSectionId optional.String
 }
 
 /*
 AllHomepageItems Get All Homepage Items
-### Get information about all homepage items. 
+### Get information about all homepage items.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllHomepageItemsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -155,13 +156,13 @@ func (a *HomepageApiService) AllHomepageItems(ctx _context.Context, localVarOpti
 
 // AllHomepageSectionsOpts Optional parameters for the method 'AllHomepageSections'
 type AllHomepageSectionsOpts struct {
-    Fields optional.String
-    Sorts optional.String
+	Fields optional.String
+	Sorts  optional.String
 }
 
 /*
 AllHomepageSections Get All Homepage sections
-### Get information about all homepage sections. 
+### Get information about all homepage sections.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllHomepageSectionsOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -275,12 +276,12 @@ func (a *HomepageApiService) AllHomepageSections(ctx _context.Context, localVarO
 
 // AllHomepagesOpts Optional parameters for the method 'AllHomepages'
 type AllHomepagesOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 AllHomepages Get All Homepages
-### Get information about all homepages. 
+### Get information about all homepages.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *AllHomepagesOpts - Optional Parameters:
  * @param "Fields" (optional.String) -  Requested fields.
@@ -390,12 +391,12 @@ func (a *HomepageApiService) AllHomepages(ctx _context.Context, localVarOptional
 
 // CreateHomepageOpts Optional parameters for the method 'CreateHomepage'
 type CreateHomepageOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 CreateHomepage Create Homepage
-### Create a new homepage. 
+### Create a new homepage.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepage Homepage
  * @param optional nil or *CreateHomepageOpts - Optional Parameters:
@@ -538,12 +539,12 @@ func (a *HomepageApiService) CreateHomepage(ctx _context.Context, homepage Homep
 
 // CreateHomepageItemOpts Optional parameters for the method 'CreateHomepageItem'
 type CreateHomepageItemOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 CreateHomepageItem Create Homepage Item
-### Create a new homepage item. 
+### Create a new homepage item.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageItem Homepage Item
  * @param optional nil or *CreateHomepageItemOpts - Optional Parameters:
@@ -686,12 +687,12 @@ func (a *HomepageApiService) CreateHomepageItem(ctx _context.Context, homepageIt
 
 // CreateHomepageSectionOpts Optional parameters for the method 'CreateHomepageSection'
 type CreateHomepageSectionOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 CreateHomepageSection Create Homepage section
-### Create a new homepage section. 
+### Create a new homepage section.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageSection Homepage section
  * @param optional nil or *CreateHomepageSectionOpts - Optional Parameters:
@@ -834,7 +835,7 @@ func (a *HomepageApiService) CreateHomepageSection(ctx _context.Context, homepag
 
 /*
 DeleteHomepage Delete Homepage
-### Delete a homepage. 
+### Delete a homepage.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageId Id of homepage
 @return string
@@ -951,7 +952,7 @@ func (a *HomepageApiService) DeleteHomepage(ctx _context.Context, homepageId int
 
 /*
 DeleteHomepageItem Delete Homepage Item
-### Delete a homepage item. 
+### Delete a homepage item.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageItemId Id of homepage_item
 @return string
@@ -1068,7 +1069,7 @@ func (a *HomepageApiService) DeleteHomepageItem(ctx _context.Context, homepageIt
 
 /*
 DeleteHomepageSection Delete Homepage section
-### Delete a homepage section. 
+### Delete a homepage section.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageSectionId Id of homepage_section
 @return string
@@ -1185,12 +1186,12 @@ func (a *HomepageApiService) DeleteHomepageSection(ctx _context.Context, homepag
 
 // HomepageOpts Optional parameters for the method 'Homepage'
 type HomepageOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 Homepage Get Homepage
-### Get information about a homepage. 
+### Get information about a homepage.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageId Id of homepage
  * @param optional nil or *HomepageOpts - Optional Parameters:
@@ -1302,12 +1303,12 @@ func (a *HomepageApiService) Homepage(ctx _context.Context, homepageId int64, lo
 
 // HomepageItemOpts Optional parameters for the method 'HomepageItem'
 type HomepageItemOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 HomepageItem Get Homepage Item
-### Get information about a homepage item. 
+### Get information about a homepage item.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageItemId Id of homepage item
  * @param optional nil or *HomepageItemOpts - Optional Parameters:
@@ -1419,12 +1420,12 @@ func (a *HomepageApiService) HomepageItem(ctx _context.Context, homepageItemId i
 
 // HomepageSectionOpts Optional parameters for the method 'HomepageSection'
 type HomepageSectionOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 HomepageSection Get Homepage section
-### Get information about a homepage section. 
+### Get information about a homepage section.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageSectionId Id of homepage section
  * @param optional nil or *HomepageSectionOpts - Optional Parameters:
@@ -1536,24 +1537,24 @@ func (a *HomepageApiService) HomepageSection(ctx _context.Context, homepageSecti
 
 // SearchHomepagesOpts Optional parameters for the method 'SearchHomepages'
 type SearchHomepagesOpts struct {
-    Title optional.String
-    CreatedAt optional.String
-    FirstName optional.String
-    LastName optional.String
-    Fields optional.String
-    Favorited optional.Bool
-    CreatorId optional.String
-    Sorts optional.String
-    Page optional.Int64
-    PerPage optional.Int64
-    Offset optional.Int64
-    Limit optional.Int64
-    FilterOr optional.Bool
+	Title     optional.String
+	CreatedAt optional.String
+	FirstName optional.String
+	LastName  optional.String
+	Fields    optional.String
+	Favorited optional.Bool
+	CreatorId optional.String
+	Sorts     optional.String
+	Page      optional.Int64
+	PerPage   optional.Int64
+	Offset    optional.Int64
+	Limit     optional.Int64
+	FilterOr  optional.Bool
 }
 
 /*
 SearchHomepages Search Homepages
-### Search Homepages  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.  
+### Search Homepages  If multiple search params are given and &#x60;filter_or&#x60; is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If &#x60;filter_or&#x60; is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain &#x60;%&#x60; and &#39;_&#39; as SQL LIKE pattern match wildcard expressions. example&#x3D;\&quot;dan%\&quot; will match \&quot;danger\&quot; and \&quot;Danzig\&quot; but not \&quot;David\&quot; example&#x3D;\&quot;D_m%\&quot; will match \&quot;Damage\&quot; and \&quot;dump\&quot;  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \&quot;IS NULL\&quot; and \&quot;NOT NULL\&quot; as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \&quot;true\&quot; and \&quot;false\&quot; as values.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchHomepagesOpts - Optional Parameters:
  * @param "Title" (optional.String) -  Matches homepage title.
@@ -1711,12 +1712,12 @@ func (a *HomepageApiService) SearchHomepages(ctx _context.Context, localVarOptio
 
 // UpdateHomepageOpts Optional parameters for the method 'UpdateHomepage'
 type UpdateHomepageOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 UpdateHomepage Update Homepage
-### Update a homepage definition. 
+### Update a homepage definition.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageId Id of homepage
  * @param homepage Homepage
@@ -1851,12 +1852,12 @@ func (a *HomepageApiService) UpdateHomepage(ctx _context.Context, homepageId int
 
 // UpdateHomepageItemOpts Optional parameters for the method 'UpdateHomepageItem'
 type UpdateHomepageItemOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 UpdateHomepageItem Update Homepage Item
-### Update a homepage item definition. 
+### Update a homepage item definition.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageItemId Id of homepage item
  * @param homepageItem Homepage Item
@@ -1991,12 +1992,12 @@ func (a *HomepageApiService) UpdateHomepageItem(ctx _context.Context, homepageIt
 
 // UpdateHomepageSectionOpts Optional parameters for the method 'UpdateHomepageSection'
 type UpdateHomepageSectionOpts struct {
-    Fields optional.String
+	Fields optional.String
 }
 
 /*
 UpdateHomepageSection Update Homepage section
-### Update a homepage section definition. 
+### Update a homepage section definition.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param homepageSectionId Id of homepage section
  * @param homepageSection Homepage section
