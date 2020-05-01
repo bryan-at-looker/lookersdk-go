@@ -1,6 +1,6 @@
 # \DatagroupApi
 
-All URIs are relative to *https://meliext.cloud.looker.com:443/api/3.1*
+All URIs are relative to *https://customer.looker.com:443/api/3.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

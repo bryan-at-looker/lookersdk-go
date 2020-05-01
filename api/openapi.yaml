@@ -78,12 +78,12 @@ info:
 
   license:
     name: EULA
-    url: https://meliext.cloud.looker.com/eula
+    url: https://customer.looker.com/eula
   title: Looker API 3.1 Reference
   version: 3.1.0
   x-looker-release-version: 7.4.32
 servers:
-- url: https://meliext.cloud.looker.com:443/api/3.1
+- url: https://customer.looker.com:443/api/3.1
 tags:
 - description: API Authentication
   name: ApiAuth
