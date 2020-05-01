@@ -72,6 +72,12 @@ func NewConfiguration() *Configuration {
 	if len(apiVersion) > 0 {
 		fmt.Errorf("environment variable LOOKERSDK_API_VERSION is not set")
 	}
+	if len(os.Getenv("LOOKERSDK_CLIENT_ID")) > 0 {
+		fmt.Errorf("environment variable LOOKERSDK_CLIENT_ID is not set")
+	}
+	if len(os.Getenv("LOOKERSDK_CLIENT_SECRET")) > 0 {
+		fmt.Errorf("environment variable LOOKERSDK_CLIENT_SECRET is not set")
+	}
 	cfg := &Configuration{
 		BasePath:      baseURL + "/api/" + apiVersion,
 		DefaultHeader: make(map[string]string),
